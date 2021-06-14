@@ -1,9 +1,11 @@
+/* Stylings of Global Body */
 body{
     margin: 0;
     padding:0;
     display: flex;
 }
 
+/* Stylings of left Div */
 #left{
     background-image: url(/static/logo.png);
     background-repeat: no-repeat;
@@ -22,7 +24,7 @@ img{
     filter: invert(1);
 }
 
-
+/* Stylings of Right Div */
 
 #right{
     height: 100vh;
@@ -30,9 +32,9 @@ img{
     background-color: #000;
     display: grid;
 }
-
+/* Stylings of UpperDiv of RightDiv */
 #info{
-    display: inline-flex;
+    /* display: inline-flex; */
     flex-direction: column;
     margin-left: 40px;
     margin-top: 150px;
@@ -52,34 +54,37 @@ h2{
     font-size: 40px;
 }
 
-button{
-    margin: auto;
-    margin-left: 40px;
-    border-radius: 30px;
-    padding: 15px 150px;
-    display: flex;
-    flex-direction: column;
-
-}
-
 #login{
-    margin: auto;
+    /* margin: auto; */
     color: white;
     background-color: #1ea1f2;
     margin-bottom: 25px;
+    border-radius: 30px;
+    padding: 15px 150px;
+
     /* border-radius: 30px;
     padding: 15px 120px; */
 }
 
 #signup{
-    margin: auto;
+    /* margin: auto; */
     color: white;
     background-color: #000000;
+    border-radius: 30px;
+    padding: 15px 150px;
     /* border-radius: 30px;
     padding: 15px 120px; */
 }
 
+/* Stylings of LowerDiv of RightDiv */
+/* #button{
+    margin-left: 40px;
 
+
+} */
+
+
+/* Stylings of Footer */
 footer{
   position: fixed;
   padding: 20px 10px;
