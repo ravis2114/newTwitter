@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, render_template
 
 from blueprints.main.views import main
 from blueprints.api.views import apis
@@ -12,6 +12,10 @@ def create_app():
 
 	app.register_blueprint(main, url_prefix='/home')
 	app.register_blueprint(apis)
+
+	@app.route('/')
+	def newTwitter():
+		return render_template('newTwitter.html')
 
 
 	return app
