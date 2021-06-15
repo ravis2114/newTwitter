@@ -7,7 +7,7 @@ body{
 
 /* Stylings of left Div */
 #left{
-    background-image: url(/static/img/logo.png);
+    background-image: url(../img/logo.png);
     background-repeat: no-repeat;
     background-size: cover;
 

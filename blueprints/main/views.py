@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session
 import mysql.connector
 
-main = Blueprint('main',__name__, template_folder='templates', static_folder='static')
+main = Blueprint('main',__name__, template_folder='templates', static_folder='static', static_url_path='main/static')
 
 
 conn = mysql.connector.connect(host='remotemysql.com',user='kEOWWtr4ag', password='dgXWQcifF8', database='kEOWWtr4ag')
