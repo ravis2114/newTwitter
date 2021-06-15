@@ -5,12 +5,27 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" type="text/css" href="{{ url_for('main.static', filename='css/style.css') }}">
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('landingPage.static', filename='css/style.css') }}"> -->
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>LOG, IN!</title>
   </head>
+
+  <style>
+
+    
+/* SignIn Page css */
+
+.bg-nav {
+
+background: #ad5389;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #ff7e5f, #feb47b);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #ff7e5f, #feb47b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+  </style>
   <body class="bg-nav">
 
 
@@ -31,7 +46,7 @@
             <input type="submit" value="Sign In" class="btn btn-primary btn-block btn-lg">
           
           </form>
-          <p>not a member? <a href="{{ url_for('.signup')}}">Sign Up</a></p>
+          <p>not a member? <a>Sign Up</a></p>
         </div>
       </div>
     </div>

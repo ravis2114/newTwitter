@@ -5,3 +5,7 @@ landingPage = Blueprint('landingPage',__name__, template_folder='templates', sta
 @landingPage.route('/', methods=['POST', 'GET'])
 def home():
     return render_template('landingPage/newTwitter.html')
+
+@landingPage.route('/signin', methods=['POST', 'GET'])
+def signin():
+    return render_template('landingPage/signin.html')
