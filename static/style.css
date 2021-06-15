@@ -112,10 +112,13 @@ a{
     top: 0;
     left: 0;
     background-color: rgb(0, 0, 0 , 0.3);
-    display: flex;
     justify-content: center;
     align-items: center;
+    display: none;
+    
 }
+
+
     
 
 .form{
@@ -214,3 +217,12 @@ p{
 #year{
     width: 25%;
 }
+
+
+/* Focus Input */
+
+select, #name, #phone :focus{
+    border-color: #1ea1f2;
+    border-radius: 2px;
+}
+

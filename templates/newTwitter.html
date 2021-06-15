@@ -20,7 +20,7 @@
             <h1>Happening Now.</h1>
             <h2>Join newTwitter today.</h2>
             <button id="login">Log In</button>
-            <button id="signup">Sign Up</button>
+            <button id="signup" onclick="openForm()">Sign Up</button>
         </div>
 
         <!-- <div id="button">
@@ -49,7 +49,7 @@
     </footer>
 
 
-    <div class="formContainer">
+    <div id="formContainer" class="formContainer">
 
         <div class="form">
             <div class="formHead">
@@ -64,8 +64,8 @@
             <div class="formBody">
 
                 <label id="labelname" for="name">Create your account</label>
-                <input id="name" type="text" placeholder="Name" value="">
-                <input id="phone" type="number" placeholder="Number" value="">
+                <input id="name" type="text" placeholder="Name" value="" required>
+                <input id="phone" type="number" placeholder="Number" value="" required>
                 
                 <div #dobinfo>
                     <h4>Date of Birth</h4>
@@ -253,6 +253,16 @@
             </div>
         </div>
     </div>
+
+
+
+
+    <!-- popup func -->
+    <script>
+        function openForm(){
+            document.getElementById("formContainer").style.display="flex";
+        }
+    </script>
 </body>
 
 </html>
