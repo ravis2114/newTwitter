@@ -125,8 +125,9 @@ a{
     align-items: center;
     display: flex;
     flex-direction: column;
-    border-radius: 20px;
-    border-color: coral;
+    border-radius: 20px; 
+    padding-bottom: 75px;
+    width: 535px;
 }
 
 .formHead{
