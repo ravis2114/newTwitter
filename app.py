@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template
 
 from blueprints.main.views import main
+from blueprints.landingPage.views import landingPage
 
 def create_app():
 	app = Flask(__name__)
@@ -9,11 +10,12 @@ def create_app():
 	app.secret_key = "fuvdlbbdkjbv8734r93-kcjkfdbvk@#$F%$" #os.environ.get('SECRET_KEY')
 	#app.config.from_object([os.environ['APP_SETTINGS']])
 
-	app.register_blueprint(main, url_prefix='/home')
+	# app.register_blueprint(main)
+	app.register_blueprint(landingPage, url_prefix='/')
 
-	@app.route('/')
-	def newTwitter():
-		return render_template('newTwitter.html')
+	# @app.route('/')
+	# def newTwitter():
+	# 	return render_template('newTwitter.html')
 
 
 	return app
