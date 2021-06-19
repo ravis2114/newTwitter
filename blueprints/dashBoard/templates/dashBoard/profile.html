@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('dashBoard.static', filename='css/profile.css') }}">
+    <title>Profile</title>
+</head>
+
+<body>
+
+    <div class="content">
+
+        <!-- Navigation   -->
+        <div class="navigation">
+            <div class="arrow">Arrow</div>
+            <div class="header">Ujjwal Kumar</div>
+            <div class="subtext">69 Tweets</div>
+        </div>
+        <!--   Cover -->
+        <div class="cover">
+            <img src="https://pbs.twimg.com/profile_banners/1022839438068469760/1614441096/1500x500" alt="">
+        </div>
+
+        <!--  Bio section  -->
+        <div class="bio">
+
+            <div class="pre-bio">
+                <div class="avatar"></div>
+                <div class="edit-profile">Edit profile</div>
+            </div>
+
+            <div>
+                <div class="name">Ujjwal Kumar</div>
+                <div class="user">@masteryoda_69</div>
+            </div>
+
+            <div>Hello, there.</div>
+            <div>
+                <span class="secondary ml-4">📍 Bihar</span>
+                <span class="secondary ml-4">🎂 August 14</span>
+                <span class="secondary ml-4">Joined March 2021</span> </br>
+                <a href="https://www.twitter.com/masteryoda_69" target="_blank">Twitter Link</a>
+            </div>
+
+            <div>
+                10 <span class="secondary">Following</span>
+                6.9K <span class="secondary">Followers</span>
+            </div>
+        </div>
+
+        <!--   Tabs start     -->
+        <div class="tabs">
+            <div class="selected">Tweets</div>
+            <div>Teets & Replies</div>
+            <div>Media</div>
+            <div>Links</div>
+        </div>
+
+
+
+        <!-- Infinit Feed -->
+        <div class="feed">
+            <div class="userid">
+                <div class="avatar-mini"></div>
+                <div class="name">Ujjwal Kumar</div>
+                <div class="user">@masteryoda_69</div>
+            </div>
+            <div class="caption">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos accusantium iure molestias
+                adipisci nulla sequi. Facilis dolorum maiores reiciendis illum omnis temporibus! Ad dolore maxime odit a
+                numquam, reprehenderit accusamus odio corporis veniam animi asperiores ab enim, id quisquam impedit
+                magnam unde explicabo, blanditiis sint sunt quibusdam? Nesciunt libero animi officia accusamus
+                repudiandae nostrum quia tempora amet laudantium corrupti facere, deserunt ratione voluptatum incidunt
+                provident minima doloremque explicabo! Aliquid, autem odit exercitationem mollitia nam quod ab, dolore
+                deserunt fuga debitis expedita consequatur quaerat, unde quibusdam amet laboriosam recusandae corrupti
+                nesciunt totam? Minima, minus consequuntur et animi eaque accusamus laborum sed?
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- Script -->
+    <script>
+        function main() {
+            const arrow = document.querySelector('.arrow');
+            arrow.innerHTML = '<svg viewBox="0 0 24 24" class="r-61mi1v r-4qtqp9 r-yyyyoo r-1q142lx r-50lct3 r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1srniue"><g><path d="M20 11H7.414l4.293-4.293c.39-.39.39-1.023 0-1.414s-1.023-.39-1.414 0l-6 6c-.39.39-.39 1.023 0 1.414l6 6c.195.195.45.293.707.293s.512-.098.707-.293c.39-.39.39-1.023 0-1.414L7.414 13H20c.553 0 1-.447 1-1s-.447-1-1-1z"></path></g></svg>';
+
+
+
+        }
+
+        window.addEventListener("load", main);
+
+    </script>
+
+</body>
+
+</html>

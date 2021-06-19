@@ -28,7 +28,7 @@ def signin():
                 session['user'] = users[0][1]
 
                 if len(users)>0:
-                    return redirect(url_for('.dashboard'))
+                    return render_template('dashBoard/profile.html')
                 else:
                     return render_template('landingPage/signin.html')
                     

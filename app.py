@@ -2,8 +2,8 @@ import os
 from flask import Flask, render_template
 from flask.helpers import url_for
 
-from blueprints.main.views import main
 from blueprints.landingPage.views import landingPage
+from blueprints.dashBoard.views import dashBoard
 
 def create_app():
 	app = Flask(__name__)
@@ -13,6 +13,8 @@ def create_app():
 
 	# app.register_blueprint(main, url_prefix='/')
 	app.register_blueprint(landingPage, url_prefix='/')
+
+	app.register_blueprint(dashBoard, url_prefix="/profile")
 
 	# @app.route('/')
 	# def newTwitter():
