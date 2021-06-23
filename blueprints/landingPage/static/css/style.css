@@ -173,7 +173,7 @@ margin-left: 47%;
 
 
 
-#labelname, #name, #phone, select, option{
+#labelname, #name, #phone, #password, select, option{
     border-radius: 10px;
     padding-bottom: 5px;
     height: 30px;
@@ -184,6 +184,10 @@ label{
 }
 
 #name{
+    margin: 15px 0;
+}
+
+#password{
     margin: 15px 0;
 }
 
@@ -220,7 +224,7 @@ p{
 
 /* Focus Input */
 
-select, #name, #phone :focus{
+select, #name, #phone, #password :focus{
     border-color: #1ea1f2;
     border-radius: 2px;
 }

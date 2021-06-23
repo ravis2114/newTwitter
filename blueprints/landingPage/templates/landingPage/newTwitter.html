@@ -51,21 +51,22 @@
 
     <div id="formContainer" class="formContainer">
 
-        <div class="form">
+        <form class="form" method="post" action="{{ url_for('.home')}}">
             <div class="formHead">
                 <div id="imgdiv">
                     <img id="logosmall" src="https://pngimg.com/uploads/twitter/twitter_PNG1.png">
                 </div>
                 <div id="btndiv">
-                    <button id="nextsignup">SignUp</button>
+                    <button id="nextsignup" type="submit">SignUp</button>
                 </div>
             </div>
 
             <div class="formBody">
 
                 <label id="labelname" for="name">Create your account</label>
-                <input id="name" type="text" placeholder="Name" value="" required>
-                <input id="phone" type="number" placeholder="Number" value="" required>
+                <input name="name" id="name" type="text" placeholder="Name" required>
+                <input name="userid" id="phone" type="text" placeholder="Userid" required>
+                <input name="password" id="password" type="password" placeholder="Password" required>
                 
                 <div #dobinfo>
                     <h4>Date of Birth</h4>
@@ -73,7 +74,7 @@
                     pet, or something else.</p>
                 </div>
                 <div id="dob">
-                    <select id="month">
+                    <select name="month" id="month">
                         <option value="1">Jan</option>
                         <option value="2">Feb</option>
                         <option value="3">Mar</option>
@@ -88,7 +89,7 @@
                         <option value="12">Dec</option>
                     </select>
 
-                    <select id="day">
+                    <select name="day" id="day">
                         <option value="">Day</option>
                         <option value="">---</option>
                         <option value="01">01</option>
@@ -123,7 +124,7 @@
                         <option value="30">30</option>
                         <option value="31">31</option>
                     </select>
-                    <select id="year">
+                    <select name="year" id="year">
                         <option>Year</option>
                         <option value="2021">2021</option>
                         <option value="2020">2020</option>
@@ -251,7 +252,7 @@
                 </div>
 
             </div>
-        </div>
+        </form>
     </div>
 
 
