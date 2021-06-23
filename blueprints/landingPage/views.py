@@ -51,7 +51,7 @@ def signin():
                 session['user'] = user[0][1]
 
                 if user[0][1]==userid and user[0][2]==password:
-                    return render_template('dashBoard/profile.html')
+                    return render_template('dashBoard/profile.html', data=user)
                 else:
                     return render_template('landingPage/signin.html')
                     
