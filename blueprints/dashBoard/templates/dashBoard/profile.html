@@ -9,9 +9,9 @@
     <title>Profile</title>
 </head>
 
-<body>
+<body onload="myFunction()">
 
-    <div class="content">
+    <div class="content" id="content">
 
         <!-- Navigation   -->
         <div class="navigation">
@@ -82,11 +82,29 @@
 
     </div>
 
-<a href="{{ url_for('.logout')}}"><button type="submit">Log out</button></a>
+    <a href="{{ url_for('.logout')}}"><button type="submit">Log out</button></a>
 
 
 
 
+    <script>
+        function myFunction() {
+            const p = document.createElement("div");
+            const t = document.createTextNode("{{data[0][0]}}");
+
+            
+            {% for i in data[0] %}
+
+            const t = document.createTextNode("{{i}}");
+            p.appendChild(t);
+            const c = document.getElementById("content");
+            c.appendChild(p);
+
+            {% endfor %}
+
+        }
+
+    </script>
 
 
 
