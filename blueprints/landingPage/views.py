@@ -26,7 +26,7 @@ def home():
             if user:
                 return redirect(url_for('.signin'))
             else:
-                cursor.execute(("INSERT INTO newtwitter_user (username, userid, userpassword, dob) VALUES ('{}','{}','{}','{}')".format(name, userid,password,day+month+year)))
+                cursor.execute(("INSERT INTO newtwitter_user (username, userid, userpassword, dob) VALUES ('{}','{}','{}','{}')".format(name, userid,password,year+'-'+month+'-'+day)))
                 conn.commit()
                 return redirect(url_for('.signin'))
 
@@ -46,12 +46,13 @@ def signin():
                 password = request.form['password']
                 
                 cursor.execute(("SELECT * FROM newtwitter_user WHERE userid='{}'".format(userid)))
+                global user
                 user = cursor.fetchall()
 
                 session['user'] = user[0][1]
 
                 if user[0][1]==userid and user[0][2]==password:
-                    return render_template('dashBoard/profile.html', data=user)
+                    return redirect(url_for('.dashboard'))
                 else:
                     return render_template('landingPage/signin.html')
                     
@@ -61,7 +62,7 @@ def signin():
 @landingPage.route('/dashboard')
 def dashboard():
 	if "user" in session:
-		return render_template('dashBoard/profile.html')
+		return render_template('dashBoard/profile.html', data=user)
 	else:
 		return redirect(url_for('.signin'))
 

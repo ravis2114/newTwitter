@@ -1,18 +1,24 @@
-import mysql.connector
+# import mysql.connector
 
-conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
-cursor = conn.cursor()
+# conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
+# cursor = conn.cursor()
+
+# qry=" SELECT * FROM newtwitter_user where dob='2001-12-2' "
+# cursor.execute((qry))
+# user = cursor.fetchall()
+
+# print(user)
 
 
-cursor.execute(("SELECT * FROM newtwitter_user WHERE userid='{}'".format('ravi123')))
-user = cursor.fetchall()
+from re import X
 
-print(user)
-print(len(user))
 
-print(user[0][1])
+def xx():
+    if True:
+        print('ravi')
+        global x 
+        x=50
 
-if user:
-    print('user exists')
-else:
-    print('user not found')
+xx()
+print('jhvdkhvkd')
+print(x)
