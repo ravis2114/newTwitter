@@ -9,7 +9,7 @@
     <title>Profile</title>
 </head>
 
-<body onload="myFunction()">
+<body>
 
     <div class="content" id="content">
 
@@ -85,26 +85,70 @@
     <a href="{{ url_for('.logout')}}"><button type="submit">Log out</button></a>
 
 
+    <!-- Float Button -->
+    <div class="floatBtn" onclick="tweetFunc()">+</div>
+
+    <!-- New Tweet Popup -->
+    <div id="tweetPopup" class="popupContainer">
+        <div class="tweetContainer">
+            <h2>Create a New Tweet</h2>
+            <textarea name="tweetArea" id="tweetArea" value=""></textarea>
+            <div class="tweetBtn" onclick="sendTweet()">newTweet</div>
+        </div>
+    </div>
+
 
 
     <script>
-        function myFunction() {
-            const p = document.createElement("div");
-            const t = document.createTextNode("{{data[0][0]}}");
+        // popup func
+        function tweetFunc() {
+            document.getElementById("tweetPopup").style.display = "flex";
+        }
 
-            
-            {% for i in data[0] %}
+        // Create Post Func
+        function sendTweet() {
+            const feed1 = document.createElement("div");
+            feed1.className = "feed";
 
-            const t = document.createTextNode("{{i}}");
-            p.appendChild(t);
+            const userid1 = document.createElement("div")
+            userid1.className = 'userid'
+
+            const avatarmini1 = document.createElement("div")
+            avatarmini1.className = "avatar-mini"
+            const name1 = document.createElement("div")
+            name1.innerHTML = "ujjwal"
+            name1.className = "name"
+            const user1 = document.createElement("div")
+            user1.className = 'user'
+
+            userid1.appendChild(avatarmini1)
+            userid1.appendChild(name1)
+            userid1.appendChild(user1)
+
+            const caption1 = document.createElement("div")
+
+
+            feed1.appendChild(userid1)
+            feed1.appendChild(caption1)
+
+
+            text = document.getElementById("tweetArea").value
+            caption1.innerHTML = text;
+
             const c = document.getElementById("content");
-            c.appendChild(p);
+            content.insertBefore(feed1, feed)
 
-            {% endfor %}
+
+
+            document.getElementById("tweetArea").value = ""
+            document.getElementById("tweetPopup").style.display = "none";
 
         }
 
     </script>
+
+
+
 
 
 
