@@ -16,7 +16,7 @@
         <!-- Navigation   -->
         <div class="navigation">
             <div class="arrow">Arrow</div>
-            <div class="header">Ujjwal Kumar</div>
+            <div class="header">{{data[0][0]}}</div>
             <div class="subtext">69 Tweets</div>
         </div>
         <!--   Cover -->
@@ -33,8 +33,8 @@
             </div>
 
             <div>
-                <div class="name">Ujjwal Kumar</div>
-                <div class="user">@masteryoda_69</div>
+                <div class="name">{{data[0][0]}}</div>
+                <div class="user">@{{data[0][1]}}</div>
             </div>
 
             <div>Hello, there.</div>
@@ -65,8 +65,8 @@
         <div class="feed" id="feed">
             <div class="userid">
                 <div class="avatar-mini"></div>
-                <div class="name">Ujjwal Kumar</div>
-                <div class="user">@masteryoda_69</div>
+                <div class="name">{{data[0][0]}}</div>
+                <div class="user">@{{data[0][1]}}</div>
             </div>
             <div class="caption">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos accusantium iure molestias
@@ -93,7 +93,7 @@
 
     <!-- New Tweet Popup -->
     <div id="tweetPopup" class="popupContainer">
-        <div class="tweetContainer">
+        <div class="tweetContainer" method="post" action="{{ url_for('dashBoard.post')}}">
             <h2>Create a New Tweet</h2>
             <textarea name="tweetArea" id="tweetArea" value=""></textarea>
             <div class="tweetBtn" onclick="sendTweet()" type='submit'>newTweet</div>
