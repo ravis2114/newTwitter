@@ -52,6 +52,7 @@ def signin():
                 cursor.execute(("SELECT * FROM newtwitter_comment WHERE userid='{}'".format(userid)))
                 global comments
                 comments = cursor.fetchall()
+                print(comments)
 
                 session['user'] = user[0][1]
 
