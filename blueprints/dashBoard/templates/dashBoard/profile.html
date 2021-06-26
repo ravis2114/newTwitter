@@ -119,9 +119,10 @@
             const avatarmini1 = document.createElement("div")
             avatarmini1.className="avatar-mini"
             const name1 = document.createElement("div")
-            name1.innerHTML="ujjwal"
+            name1.innerHTML="{{data[0][0]}}"
             name1.className="name"
             const user1 = document.createElement("div")
+            user1.innerHTML="@{{data[0][1]}}"
             user1.className='user'
 
             userid1.appendChild(avatarmini1)
