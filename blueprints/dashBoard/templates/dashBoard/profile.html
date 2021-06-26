@@ -93,14 +93,14 @@
 
     <!-- New Tweet Popup -->
     <div id="tweetPopup" class="popupContainer">
-        <div class="tweetContainer" method="post" action="{{ url_for('dashBoard.post')}}">
+        <form class="tweetContainer" method="post" action="{{ url_for('dashBoard.post')}}">
             <h2>Create a New Tweet</h2>
-            <textarea name="tweetArea" id="tweetArea" value=""></textarea>
-            <div class="tweetBtn" onclick="sendTweet()" type='submit'>newTweet</div>
-        </div>
+            <textarea name="tweetArea" id="tweetArea"></textarea>
+            <button class="tweetBtn"  type='submit' onclick="sendTweet()">newTweet</button>
+        </form>
     </div>
 
-    <a href="{{ url_for('.logout')}}"><button type="submit">Log out</button></a>
+    <a href="{{ url_for('landingPage.logout')}}"><button type="submit">Log out</button></a>
 
     <script>
         // popup func

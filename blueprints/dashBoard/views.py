@@ -16,11 +16,16 @@ def home():
 def post():
     if request.method=='POST':
         userid = session['user']
-        print(userid)
+        print(userid, session)
         post = request.form['tweetArea']
+        print(post)
         time = datetime.datetime.now()
+
+        cursor.execute(("SELECT * FROM newtwitter_user WHERE userid='{}'".format(userid)))
+        global user
+        user = cursor.fetchall()
 
         cursor.execute(("INSERT INTO newtwitter_comment (userid, comments, toc) VALUES ('{}','{}','{}')".format(userid,post,time)))
         conn.commit()
 
-        return render_template('dashBoard/profile.html')
+        return render_template('dashBoard/profile.html', data=user)
