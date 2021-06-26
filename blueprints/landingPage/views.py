@@ -49,7 +49,7 @@ def signin():
                 global user
                 user = cursor.fetchall()
 
-                cursor.execute(("SELECT * FROM newtwitter_comment WHERE userid='{}'".format(userid)))
+                cursor.execute(("SELECT * FROM newtwitter_comment WHERE userid='{}' ORDER BY toc DESC".format(userid)))
                 global comments
                 comments = cursor.fetchall()
                 print(comments)
