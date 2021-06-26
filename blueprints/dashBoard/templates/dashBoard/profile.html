@@ -52,7 +52,7 @@
         </div>
 
         <!--   Tabs start     -->
-        <div class="tabs">
+        <div class="tabs" id="tabs">
             <div class="selected">Tweets</div>
             <div>Teets & Replies</div>
             <div>Media</div>
@@ -129,6 +129,7 @@
             userid1.appendChild(user1)
 
             const caption1 = document.createElement("div")
+            caption1.className='caption'
 
 
             feed1.appendChild(userid1)
@@ -138,10 +139,10 @@
             text=document.getElementById("tweetArea").value
             caption1.innerHTML=text;
 
-            const c = document.getElementById("content");
-            content.insertBefore(feed1,feed)
-
-
+            // const c = document.getElementById("content");
+            // c.insertBefore(feed1,feed)
+            
+            tabs.after(feed1);
 
             document.getElementById("tweetArea").value = ""
             document.getElementById("tweetPopup").style.display = "none";

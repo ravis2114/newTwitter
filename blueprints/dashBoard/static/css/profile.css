@@ -145,7 +145,6 @@
     }
   .ml-4 {
     /* margin-left:2em; */
-    
   }
     .tabs {
       display: grid;
@@ -184,6 +183,7 @@
     }
     .userid{
         display: flex;
+        padding: 0 3px;
     }
     .avatar-mini{
       background-color: salmon;
