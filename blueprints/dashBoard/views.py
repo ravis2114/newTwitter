@@ -25,7 +25,12 @@ def post():
         global user
         user = cursor.fetchall()
 
+
         cursor.execute(("INSERT INTO newtwitter_comment (userid, comments, toc) VALUES ('{}','{}','{}')".format(userid,post,time)))
         conn.commit()
 
-        return render_template('dashBoard/profile.html', data=user)
+        cursor.execute(("SELECT * FROM newtwitter_comment WHERE userid='{}'".format(userid)))
+        global comments
+        comments = cursor.fetchall()
+
+        return render_template('dashBoard/profile.html', data=(user,comments))

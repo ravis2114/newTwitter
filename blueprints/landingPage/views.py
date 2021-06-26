@@ -49,6 +49,10 @@ def signin():
                 global user
                 user = cursor.fetchall()
 
+                cursor.execute(("SELECT * FROM newtwitter_comment WHERE userid='{}'".format(userid)))
+                global comments
+                comments = cursor.fetchall()
+
                 session['user'] = user[0][1]
 
                 if user[0][1]==userid and user[0][2]==password:
@@ -62,7 +66,7 @@ def signin():
 @landingPage.route('/dashboard')
 def dashboard():
 	if "user" in session:
-		return render_template('dashBoard/profile.html', data=user)
+		return render_template('dashBoard/profile.html', data=(user,comments))
 	else:
 		return redirect(url_for('.signin'))
 

@@ -16,7 +16,7 @@
         <!-- Navigation   -->
         <div class="navigation">
             <div class="arrow">Arrow</div>
-            <div class="header">{{data[0][0]}}</div>
+            <div class="header">{{data[0][0][0]}}</div>
             <div class="subtext">69 Tweets</div>
         </div>
         <!--   Cover -->
@@ -33,8 +33,8 @@
             </div>
 
             <div>
-                <div class="name">{{data[0][0]}}</div>
-                <div class="user">@{{data[0][1]}}</div>
+                <div class="name">{{data[0][0][0]}}</div>
+                <div class="user">@{{data[0][0][1]}}</div>
             </div>
 
             <div>Hello, there.</div>
@@ -62,23 +62,18 @@
 
 
         <!-- Infinit Feed -->
+        {% for i in data[1] %}
         <div class="feed" id="feed">
             <div class="userid">
                 <div class="avatar-mini"></div>
-                <div class="name">{{data[0][0]}}</div>
-                <div class="user">@{{data[0][1]}}</div>
+                <div class="name">{{data[0][0][0]}}</div>
+                <div class="user">@{{data[0][0][1]}}</div>
             </div>
             <div class="caption">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos accusantium iure molestias
-                adipisci nulla sequi. Facilis dolorum maiores reiciendis illum omnis temporibus! Ad dolore maxime odit a
-                numquam, reprehenderit accusamus odio corporis veniam animi asperiores ab enim, id quisquam impedit
-                magnam unde explicabo, blanditiis sint sunt quibusdam? Nesciunt libero animi officia accusamus
-                repudiandae nostrum quia tempora amet laudantium corrupti facere, deserunt ratione voluptatum incidunt
-                provident minima doloremque explicabo! Aliquid, autem odit exercitationem mollitia nam quod ab, dolore
-                deserunt fuga debitis expedita consequatur quaerat, unde quibusdam amet laboriosam recusandae corrupti
-                nesciunt totam? Minima, minus consequuntur et animi eaque accusamus laborum sed?
+                {{i[1]}}
             </div>
         </div>
+        {% endfor %}
 
 
 
@@ -96,7 +91,7 @@
         <form class="tweetContainer" method="post" action="{{ url_for('dashBoard.post')}}">
             <h2>Create a New Tweet</h2>
             <textarea name="tweetArea" id="tweetArea"></textarea>
-            <button class="tweetBtn"  type='submit' onclick="sendTweet()">newTweet</button>
+            <button class="tweetBtn" type='submit'>newTweet</button>
         </form>
     </div>
 
@@ -119,10 +114,10 @@
             const avatarmini1 = document.createElement("div")
             avatarmini1.className="avatar-mini"
             const name1 = document.createElement("div")
-            name1.innerHTML="{{data[0][0]}}"
+            name1.innerHTML="{{data[0][0][0]}}"
             name1.className="name"
             const user1 = document.createElement("div")
-            user1.innerHTML="@{{data[0][1]}}"
+            user1.innerHTML="@{{data[0][0][1]}}"
             user1.className='user'
 
             userid1.appendChild(avatarmini1)
