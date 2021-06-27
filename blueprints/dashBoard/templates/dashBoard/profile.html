@@ -29,7 +29,7 @@
 
             <div class="pre-bio">
                 <div class="avatar"></div>
-                <div class="edit-profile">Edit profile</div>
+                <button onclick="openEdit()" class="edit-profile">Edit profile</button>
             </div>
 
             <div>
@@ -95,9 +95,88 @@
         </form>
     </div>
 
+
+    <!-- EDIT PROFILE POPUP -->
+    <div class="editPopup" id="editPopup">
+
+        <div class="editProfile">
+
+            <div class="editHead">
+                <div class="editHeadLeft">
+                    <button class="closeEdit" onclick="closeEdit()"><img
+                            src="https://img.icons8.com/ios/100/fa314a/close-window.png" /></button>
+                    <h2>Edit Profile</h2>
+                </div>
+                <div class="editHeadRight">
+                    <button class="saveEdit" onclick="saveEdit()"><span>Save</span></button>
+                </div>
+            </div>
+
+            <div class="picsEdit">
+                <div class="coverEdit">
+                    <img src="https://pbs.twimg.com/profile_banners/1022839438068469760/1614441096/1500x500" alt="">
+
+                </div>
+                <div class="avatarEdit">
+                    <div class="addPhoto">
+                        <!-- <h4>Add Photo</h4> -->
+                    </div>
+                </div>
+            </div>
+
+            <form id="editForm" action="">
+
+                <div class="nameEdit edits">
+                    <label for="changeName ">Name
+                    </label>
+                    <input id="changeName" type="text">
+                </div>
+
+                <div class="bioEdit edits">
+                    <label for="changeBio">Bio
+                    </label>
+                    <input id="changeBio" type="text">
+                </div>
+
+                <div class="locationEdit edits">
+                    <label for="changeLocation">Location
+                    </label>
+                    <input id="changeLocation" type="text">
+                </div>
+
+                <div class="linkEdit edits">
+                    <label for="changeLink">Website
+                    </label>
+                    <input id="changeLink" type="text">
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- LOGOUT -->
     <a href="{{ url_for('landingPage.logout')}}"><button type="submit">Log out</button></a>
 
     <script>
+
+        // EDIT PROFILE FUNCTION
+        function openEdit(){
+            document.getElementById("editPopup").style.display="block"
+        }
+        function closeEdit(){
+            document.getElementById("editPopup").style.display="none"
+        }
+        function saveEdit(){
+            document.getElementById("editPopup").style.display="none"
+
+        }
+
+
+
+
+
         // popup func
         function tweetFunc() {
             document.getElementById("tweetPopup").style.display = "flex";
@@ -106,45 +185,45 @@
         // Create Post Func
         function sendTweet() {
             const feed1 = document.createElement("div");
-            feed1.className="feed";
+            feed1.className = "feed";
 
             const userid1 = document.createElement("div")
-            userid1.className='userid'
+            userid1.className = 'userid'
 
             const avatarmini1 = document.createElement("div")
-            avatarmini1.className="avatar-mini"
+            avatarmini1.className = "avatar-mini"
             const name1 = document.createElement("div")
-            name1.innerHTML="{{data[0][0][0]}}"
-            name1.className="name"
+            name1.innerHTML = "{{data[0][0][0]}}"
+            name1.className = "name"
             const user1 = document.createElement("div")
-            user1.innerHTML="@{{data[0][0][1]}}"
-            user1.className='user'
+            user1.innerHTML = "@{{data[0][0][1]}}"
+            user1.className = 'user'
 
             userid1.appendChild(avatarmini1)
             userid1.appendChild(name1)
             userid1.appendChild(user1)
 
             const caption1 = document.createElement("div")
-            caption1.className='caption'
+            caption1.className = 'caption'
 
 
             feed1.appendChild(userid1)
             feed1.appendChild(caption1)
 
 
-            text=document.getElementById("tweetArea").value
-            caption1.innerHTML=text;
+            text = document.getElementById("tweetArea").value
+            caption1.innerHTML = text;
 
-            // const c = document.getElementById("content");
-            // c.insertBefore(feed1,feed)
-            
+            const c = document.getElementById("content");
+            c.insertBefore(feed1,feed)
+
             tabs.after(feed1);
 
             document.getElementById("tweetArea").value = ""
             document.getElementById("tweetPopup").style.display = "none";
 
         }
-        
+
     </script>
 
     <!-- Script -->
