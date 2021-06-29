@@ -66,10 +66,10 @@ def signin():
 
 @landingPage.route('/dashboard')
 def dashboard():
-	if "user" in session:
-		return render_template('dashBoard/profile.html', data=(user,comments))
-	else:
-		return redirect(url_for('.signin'))
+    if "user" in session:
+	    return render_template('dashBoard/profile.html', data=(user,comments))
+    else:
+	    return redirect(url_for('.signin'))
 
 @landingPage.route('/logout', methods=['POST', 'GET'])
 def logout():

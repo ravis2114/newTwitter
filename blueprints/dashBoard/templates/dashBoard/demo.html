@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form enctype="multipart/form-data" action="{{url_for('dashBoard.xxx')}}" method="post">
+        <input name="image" type="file" id="myFile">
+        <button name="image" type="submit">upload</button>
+    </form>
+    
+
+    <script>
+
+        function xxx(){
+            var myUploadedFile = document.getElementById("myFile").files[0];
+            myUploadedFile.addEventListener('',console.log('added'))
+        }
+
+        function upload(){
+            var myUploadedFile = document.getElementById("myFile").files[0];
+            // const myUploadedFile = document.querySelector('input[type="file"]')[0];
+            console.log('test 1')
+
+            myUploadedFile.addEventListener('change', (e) => {
+
+            const fd = new FormData();
+            console.log('test 2')
+
+
+            // add all selected files
+            e.target.files.forEach((file) => {
+            fd.append(e.target.name, file, file.name);  
+            });
+
+            // create the request
+            const xhr = new XMLHttpRequest();
+            xhr.onload = () => {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                // we done!
+                console.log('test 3')
+
+            }
+            };
+
+            // path to server would be where you'd normally post the form to
+            xhr.open('POST', '/profile/upload', true);
+            console.log('test 4');
+            xhr.send(fd);
+            console.log('test 5')
+            });
+        }
+    </script>
+</body>
+</html>

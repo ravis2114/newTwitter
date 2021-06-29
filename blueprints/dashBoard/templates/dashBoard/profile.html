@@ -91,7 +91,7 @@
         <form class="tweetContainer" method="post" action="{{ url_for('dashBoard.post')}}">
             <h2>Create a New Tweet</h2>
             <textarea name="tweetArea" id="tweetArea"></textarea>
-            <button class="tweetBtn" type='submit'>newTweet</button>
+            <button class="tweetBtn" type='submit' onclick="sendTweet()">newTweet</button>
         </form>
     </div>
 
@@ -158,6 +158,7 @@
 
     <!-- LOGOUT -->
     <a href="{{ url_for('landingPage.logout')}}"><button type="submit">Log out</button></a>
+
 
     <script>
 

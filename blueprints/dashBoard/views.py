@@ -1,6 +1,9 @@
 from blueprints.landingPage.views import dashboard
 from flask import Blueprint, render_template, session, redirect, url_for, request
 import datetime
+import io
+import base64
+from PIL import Image
 import mysql.connector
 
 conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
@@ -33,6 +36,15 @@ def post():
         cursor.execute(("SELECT * FROM newtwitter_comment WHERE userid='{}' ORDER BY toc DESC".format(userid)))
         global comments
         comments = cursor.fetchall()
-        print(comments)
+        # print(comments)
 
         return render_template('dashBoard/profile.html', data=(user,comments))
+
+@dashBoard.route('/upload', methods=['GET', 'POST'])
+def xxx():
+    if request.method=='POST':
+        im = request.files['image']
+        im=im.save('static/images/x.jpg')
+        return render_template('dashBoard/demo.html')
+    else:
+        return render_template('dashBoard/demo.html')
