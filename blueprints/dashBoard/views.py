@@ -1,9 +1,6 @@
 from blueprints.landingPage.views import dashboard
 from flask import Blueprint, render_template, session, redirect, url_for, request
 import datetime
-import io
-import base64
-from PIL import Image
 import mysql.connector
 
 conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
@@ -48,3 +45,4 @@ def xxx():
         return render_template('dashBoard/demo.html')
     else:
         return render_template('dashBoard/demo.html')
+        

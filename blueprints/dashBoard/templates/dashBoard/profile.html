@@ -99,7 +99,7 @@
     <!-- EDIT PROFILE POPUP -->
     <div class="editPopup" id="editPopup">
 
-        <div class="editProfile">
+        <form class="editProfile" enctype="multipart/form-data" action="{{url_for('dashBoard.post')}}" method="post">
 
             <div class="editHead">
                 <div class="editHeadLeft">
@@ -108,23 +108,27 @@
                     <h2>Edit Profile</h2>
                 </div>
                 <div class="editHeadRight">
-                    <button class="saveEdit" onclick="saveEdit()"><span>Save</span></button>
+                    <button type="submit" class="saveEdit" onclick="saveEdit()"><span>Save</span></button>
                 </div>
             </div>
 
             <div class="picsEdit">
                 <div class="coverEdit">
-                    <img src="https://pbs.twimg.com/profile_banners/1022839438068469760/1614441096/1500x500" alt="">
+                    <img id="coverbg" onclick="coverPrev()"
+                        src="https://pbs.twimg.com/profile_banners/1022839438068469760/1614441096/1500x500" alt="">
+
+                    <input name="image" accept="image/*" type="file" id="myCover" style="display: none;">
 
                 </div>
-                <div class="avatarEdit">
-                    <div class="addPhoto">
-                        <!-- <h4>Add Photo</h4> -->
-                    </div>
-                </div>
+                <img id="avatarEdit" onclick="dpPrev()" class="avatarEdit"
+                    src="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg">
+
+                <!-- <h4>Add Photo</h4> -->
+                <input name="image" accept="image/*" type="file" id="myDp" style="display: none;">
+
             </div>
 
-            <form id="editForm" action="">
+            <div id="editForm">
 
                 <div class="nameEdit edits">
                     <label for="changeName ">Name
@@ -149,9 +153,9 @@
                     </label>
                     <input id="changeLink" type="text">
                 </div>
-            </form>
+            </div>
 
-        </div>
+        </form>
 
     </div>
 
@@ -161,16 +165,51 @@
 
 
     <script>
+        //CHANGE PICTURES
+        function coverPrev() {
+            var bgInput = document.getElementById('myCover')
+            bgInput.click()
+
+            var bgPreview = document.getElementById("coverbg")
+
+            bgInput.addEventListener("change", function () {
+                getImgData(bgInput, bgPreview);
+            })
+
+        }
+
+        function getImgData(input, prev) {
+                // const files = bgInput.files[0];
+                const fileReader = new FileReader();
+                fileReader.readAsDataURL(input.files[0]);
+                fileReader.addEventListener("load", function () {
+                    prev.src = this.result;
+                });
+            }
+
+        function dpPrev() {
+            var dpInput = document.getElementById('myDp')
+            dpInput.click()
+
+            var dpPreview = document.getElementById('avatarEdit')
+
+            dpInput.addEventListener('change', function(){
+                getImgData(dpInput, dpPreview)
+            })
+
+        }
+
+
 
         // EDIT PROFILE FUNCTION
-        function openEdit(){
-            document.getElementById("editPopup").style.display="block"
+        function openEdit() {
+            document.getElementById("editPopup").style.display = "block"
         }
-        function closeEdit(){
-            document.getElementById("editPopup").style.display="none"
+        function closeEdit() {
+            document.getElementById("editPopup").style.display = "none"
         }
-        function saveEdit(){
-            document.getElementById("editPopup").style.display="none"
+        function saveEdit() {
+            document.getElementById("editPopup").style.display = "none"
 
         }
 
@@ -216,7 +255,7 @@
             caption1.innerHTML = text;
 
             const c = document.getElementById("content");
-            c.insertBefore(feed1,feed)
+            c.insertBefore(feed1, feed)
 
             tabs.after(feed1);
 
