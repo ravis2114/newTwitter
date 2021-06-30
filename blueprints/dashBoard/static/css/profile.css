@@ -183,8 +183,13 @@
     }
     .userid{
         display: flex;
-        padding: 0 3px;
+        padding: 0 5px;
     }
+    .name-user{
+      display: flex;
+      padding: 0 2px;
+    }
+    
     .avatar-mini{
       background-color: salmon;
       width: 50px;
@@ -203,8 +208,9 @@
     }
 
     .caption{
-        margin: 2px 10px;
-    }
+        margin: 2px 2px;
+        overflow-wrap: anywhere;    
+      }
 
 
 

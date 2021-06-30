@@ -86,12 +86,17 @@
                 {% else %}
                 <img src="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg" class="avatar">
                 {% endif %}
-                
-                <div class="name">{{data[0][0][0]}}</div>
-                <div class="user">@{{data[0][0][1]}}</div>
-            </div>
-            <div class="caption">
-                {{i[1]}}
+
+                <div> 
+                    <div class="name-user">
+                        <div class="name">{{data[0][0][0]}}</div>
+                        <div class="user">@{{data[0][0][1]}}</div>
+                    </div>
+
+                    <div class="caption">
+                       {{i[1]}}
+                    </div>
+                </div>
             </div>
         </div>
         {% endfor %}
