@@ -110,9 +110,9 @@
       border: 4px solid #15202b;
       /* background-image: url("https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg"); */
       background-size: cover;
-      cursor: pointer;
+      /* cursor: pointer; */
   }
-  .avatar:hover::after {
+  /* .avatar:hover::after {
     content: "";
     position:absolute;
     width:100%;
@@ -120,7 +120,7 @@
     border-radius:50%;
     opacity:0.5;
     background-color: var(--bkg-color);
-  }
+  } */
   
     .edit-profile {
       font-weight: 600;

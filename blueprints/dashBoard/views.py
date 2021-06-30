@@ -39,7 +39,8 @@ def post():
 			dbx.files_upload(im_cover, f'/{userid}cover.jpg')
 		
 		return redirect(url_for('landingPage.dashboard'))
-		
+	return redirect(url_for('landingPage.dashboard'))
+
 		# #getting user info
 		# cursor.execute(("SELECT * FROM newtwitter_user WHERE userid='{}'".format(userid)))
 		# global user
