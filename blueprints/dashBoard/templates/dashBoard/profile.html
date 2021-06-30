@@ -21,14 +21,16 @@
         </div>
         <!--   Cover -->
         <div class="cover">
-            <img src="https://pbs.twimg.com/profile_banners/1022839438068469760/1614441096/1500x500" alt="">
+            <img src="{{ data[2][1] }}" alt="">
         </div>
 
         <!--  Bio section  -->
         <div class="bio">
 
             <div class="pre-bio">
-                <div class="avatar"></div>
+                <div class="avatar">
+                    <img src="{{ data[2][0] }}" alt="">
+                </div>
                 <button onclick="openEdit()" class="edit-profile">Edit profile</button>
             </div>
 
@@ -117,14 +119,14 @@
                     <img id="coverbg" onclick="coverPrev()"
                         src="https://pbs.twimg.com/profile_banners/1022839438068469760/1614441096/1500x500" alt="">
 
-                    <input name="image" accept="image/*" type="file" id="myCover" style="display: none;">
+                    <input name="cover" accept="image/*" type="file" id="myCover" style="display: none;">
 
                 </div>
                 <img id="avatarEdit" onclick="dpPrev()" class="avatarEdit"
                     src="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg">
 
                 <!-- <h4>Add Photo</h4> -->
-                <input name="image" accept="image/*" type="file" id="myDp" style="display: none;">
+                <input name="dp" accept="image/*" type="file" id="myDp" style="display: none;">
 
             </div>
 
