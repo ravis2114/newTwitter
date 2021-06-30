@@ -54,12 +54,10 @@ def signin():
 				cursor.execute(("SELECT * FROM newtwitter_user WHERE userid='{}'".format(userid)))
 				user = cursor.fetchall()
 
-				cursor.execute(("SELECT * FROM newtwitter_comment WHERE userid='{}' ORDER BY toc DESC".format(userid)))
-				comments = cursor.fetchall()
-				print(comments)
-
+				#creating session data
 				session['user'] = user[0][1]
 
+				#checking if userid and pass match with those at database
 				if user[0][1]==userid and user[0][2]==password:
 					return redirect(url_for('.dashboard'))
 				else:
