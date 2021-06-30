@@ -31,12 +31,12 @@ def post():
 			dp = request.files['dp']
 			dp.save(f'static/images/{userid}.jpg')
 			im_dp = open(f'static/images/{userid}.jpg', 'rb').read()
-			dbx.files_upload(im_dp, f'/{userid}dp.jpg')
+			dbx.files_upload(im_dp, f'/{userid}dp.jpg', mode=dropbox.files.WriteMode.overwrite)
 		if 'cover' in request.files:
 			cover = request.files['cover']
 			cover.save(f'static/images/{userid}.jpg')
 			im_cover = open(f'static/images/{userid}.jpg', 'rb').read()
-			dbx.files_upload(im_cover, f'/{userid}cover.jpg')
+			dbx.files_upload(im_cover, f'/{userid}cover.jpg', mode=dropbox.files.WriteMode.overwrite)
 		
 		return redirect(url_for('landingPage.dashboard'))
 	return redirect(url_for('landingPage.dashboard'))
