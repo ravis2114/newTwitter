@@ -1,6 +1,7 @@
 from blueprints.landingPage.views import dashboard
 from flask import Blueprint, render_template, session, redirect, url_for, request
 import datetime
+import os
 import mysql.connector
 import dropbox
 
@@ -35,11 +36,14 @@ def post():
 			dp.save(f'static/images/{userid}.jpg')
 			im_dp = open(f'static/images/{userid}.jpg', 'rb').read()
 			dbx.files_upload(im_dp, f'/{userid}dp.jpg', mode=dropbox.files.WriteMode.overwrite)
+			os.remove(f'static/images/{userid}.jpg')
+
 		if request.files['cover']:
 			cover = request.files['cover']
 			cover.save(f'static/images/{userid}.jpg')
 			im_cover = open(f'static/images/{userid}.jpg', 'rb').read()
 			dbx.files_upload(im_cover, f'/{userid}cover.jpg', mode=dropbox.files.WriteMode.overwrite)
+			os.remove(f'static/images/{userid}.jpg')
 		
 		return redirect(url_for('landingPage.dashboard'))
 	return redirect(url_for('landingPage.dashboard'))
