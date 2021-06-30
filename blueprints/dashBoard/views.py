@@ -9,8 +9,8 @@ dropbox_access_token= "xogv50OrMysAAAAAAAAAAZLNZRmAmZXik0U4xaF6EoWmQlFMPiDuw6Jmf
 dropbox_path= "/Apps/newTwitter"
 dbx = dropbox.Dropbox(dropbox_access_token)
 
-conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
-cursor = conn.cursor()
+# conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
+# cursor = conn.cursor()
 
 dashBoard = Blueprint('dashBoard',__name__, template_folder='templates', static_folder='static',static_url_path='dashBoard/static')
 
@@ -56,6 +56,8 @@ def tweet():
 
 		if 'tweetArea' in request.form:
 			post = request.form['tweetArea']
+			conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
+			cursor = conn.cursor()
 			cursor.execute(("INSERT INTO newtwitter_comment (userid, comments, toc) VALUES ('{}','{}','{}')".format(userid,post,time)))
 			conn.commit()
 		return redirect(url_for('landingPage.dashboard'))

@@ -7,8 +7,8 @@ dropbox_path= "/Apps/newTwitter"
 dbx = dropbox.Dropbox(dropbox_access_token)
 
 
-conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
-cursor = conn.cursor()
+# conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
+# cursor = conn.cursor()
 
 landingPage = Blueprint('landingPage',__name__, template_folder='templates', static_folder='static',static_url_path='landingPage/static')
 
@@ -26,6 +26,8 @@ def home():
 			year= request.form['year']
 			#print(type(name), type(phoneNumber), type(password), type(month), type(day), type(year)) #all values are string
 
+			conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
+			cursor = conn.cursor()
 			cursor.execute((" SELECT * FROM newtwitter_user WHERE userid='{}' ".format(userid)))
 			user = cursor.fetchall()
 
@@ -51,6 +53,8 @@ def signin():
 				userid = request.form['userid']
 				password = request.form['password']
 				
+				conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
+				cursor = conn.cursor()
 				cursor.execute(("SELECT * FROM newtwitter_user WHERE userid='{}'".format(userid)))
 				user = cursor.fetchall()
 
@@ -70,6 +74,8 @@ def signin():
 def dashboard():
 	if "user" in session:
 		userid = session['user']
+		conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
+		cursor = conn.cursor()
 		cursor.execute(("SELECT * FROM newtwitter_user WHERE userid='{}'".format(userid)))
 		user = cursor.fetchall()
 
