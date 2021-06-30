@@ -34,13 +34,17 @@
             <div class="pre-bio">
 
                 <!-- DP -->
-                {% if data|length == 3 %}                
+                {% if data|length == 3 %}
                 <img class="avatar" src="{{ data[2][0] }}" alt="">
                 {% else %}
                 <img src="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg" class="avatar">
                 {% endif %}
 
-                <button onclick="openEdit()" class="edit-profile">Edit profile</button>
+                <div>
+                    <button onclick="openEdit()" class="edit-profile">Edit profile</button>
+                    <!-- LOGOUT -->
+                    <a href="{{ url_for('landingPage.logout')}}"><button class="edit-profile" type="submit">Log out</button></a>
+                </div>
             </div>
 
             <div>
@@ -76,7 +80,13 @@
         {% for i in data[1] %}
         <div class="feed" id="feed">
             <div class="userid">
-                <div class="avatar-mini"></div>
+                <!-- <div class="avatar-mini"></div> -->
+                {% if data|length == 3 %}
+                <img class="avatar-mini" src="{{ data[2][0] }}" alt="">
+                {% else %}
+                <img src="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg" class="avatar">
+                {% endif %}
+                
                 <div class="name">{{data[0][0][0]}}</div>
                 <div class="user">@{{data[0][0][1]}}</div>
             </div>
@@ -99,7 +109,7 @@
 
     <!-- New Tweet Popup -->
     <div id="tweetPopup" class="popupContainer">
-        <form class="tweetContainer" method="post" action="{{ url_for('dashBoard.post')}}">
+        <form class="tweetContainer" method="post" action="{{ url_for('dashBoard.tweet')}}">
             <h2>Create a New Tweet</h2>
             <textarea name="tweetArea" id="tweetArea"></textarea>
             <button class="tweetBtn" type='submit' onclick="sendTweet()">newTweet</button>
@@ -150,7 +160,7 @@
                 <div class="bioEdit edits">
                     <label for="changeBio">Bio
                     </label>
-                    <input id="changeBio" type="text">
+                    <input name="changeBio" id="changeBio" type="text">
                 </div>
 
                 <div class="locationEdit edits">
@@ -171,8 +181,6 @@
     </div>
 
 
-    <!-- LOGOUT -->
-    <a href="{{ url_for('landingPage.logout')}}"><button type="submit">Log out</button></a>
 
 
     <script>

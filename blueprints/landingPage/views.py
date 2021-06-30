@@ -52,11 +52,9 @@ def signin():
 				password = request.form['password']
 				
 				cursor.execute(("SELECT * FROM newtwitter_user WHERE userid='{}'".format(userid)))
-				global user
 				user = cursor.fetchall()
 
 				cursor.execute(("SELECT * FROM newtwitter_comment WHERE userid='{}' ORDER BY toc DESC".format(userid)))
-				global comments
 				comments = cursor.fetchall()
 				print(comments)
 
@@ -74,15 +72,18 @@ def signin():
 def dashboard():
 	if "user" in session:
 		userid = session['user']
+		cursor.execute(("SELECT * FROM newtwitter_user WHERE userid='{}'".format(userid)))
+		user = cursor.fetchall()
+
+		cursor.execute(("SELECT * FROM newtwitter_comment WHERE userid='{}' ORDER BY toc DESC".format(userid)))
+		comments = cursor.fetchall()
 		try:
 			dp = dbx.files_get_temporary_link(f'/{userid}dp.jpg')
 			dp =dp.link
 			cover = dbx.files_get_temporary_link(f'/{userid}cover.jpg')
 			cover = cover.link
-			print("try")
 			return render_template('dashBoard/profile.html', data=(user,comments, [dp, cover]))
 		except:
-			print("trysfg")
 			return render_template('dashBoard/profile.html', data=(user,comments))
 
 	else:
@@ -92,3 +93,4 @@ def dashboard():
 def logout():
 	session.clear()
 	return redirect(url_for('.signin'))
+	

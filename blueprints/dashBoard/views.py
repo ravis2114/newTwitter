@@ -23,16 +23,19 @@ def post():
 		userid = session['user']
 		time = datetime.datetime.now()
 
-		if 'tweetArea' in request.form:
-			post = request.form['tweetArea']
-			cursor.execute(("INSERT INTO newtwitter_comment (userid, comments, toc) VALUES ('{}','{}','{}')".format(userid,post,time)))
-			conn.commit()
-		if 'dp' in request.files:
+		# if request.form['changeBio']:
+		# 	bio=request.form['changeBio']
+
+		# if 'tweetArea' in request.form:
+		# 	post = request.form['tweetArea']
+		# 	cursor.execute(("INSERT INTO newtwitter_comment (userid, comments, toc) VALUES ('{}','{}','{}')".format(userid,post,time)))
+		# 	conn.commit()
+		if request.files['dp']:
 			dp = request.files['dp']
 			dp.save(f'static/images/{userid}.jpg')
 			im_dp = open(f'static/images/{userid}.jpg', 'rb').read()
 			dbx.files_upload(im_dp, f'/{userid}dp.jpg', mode=dropbox.files.WriteMode.overwrite)
-		if 'cover' in request.files:
+		if request.files['cover']:
 			cover = request.files['cover']
 			cover.save(f'static/images/{userid}.jpg')
 			im_cover = open(f'static/images/{userid}.jpg', 'rb').read()
@@ -40,6 +43,18 @@ def post():
 		
 		return redirect(url_for('landingPage.dashboard'))
 	return redirect(url_for('landingPage.dashboard'))
+
+@dashBoard.route('/tweet', methods=['GET', 'POST'])
+def tweet():
+	if request.method=='POST':
+		userid = session['user']
+		time = datetime.datetime.now()
+
+		if 'tweetArea' in request.form:
+			post = request.form['tweetArea']
+			cursor.execute(("INSERT INTO newtwitter_comment (userid, comments, toc) VALUES ('{}','{}','{}')".format(userid,post,time)))
+			conn.commit()
+		return redirect(url_for('landingPage.dashboard'))
 
 		# #getting user info
 		# cursor.execute(("SELECT * FROM newtwitter_user WHERE userid='{}'".format(userid)))
