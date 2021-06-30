@@ -74,11 +74,14 @@ def signin():
 def dashboard():
 	if "user" in session:
 		userid = session['user']
-		dp = dbx.files_get_temporary_link(f'/{userid}dp.jpg')
-		dp =dp.link
-		cover = dbx.files_get_temporary_link(f'/{userid}cover.jpg')
-		cover = cover.link
-		return render_template('dashBoard/profile.html', data=(user,comments, [dp, cover]))
+		try:
+			dp = dbx.files_get_temporary_link(f'/{userid}dp.jpg')
+			dp =dp.link
+			cover = dbx.files_get_temporary_link(f'/{userid}cover.jpg')
+			cover = cover.link
+			return render_template('dashBoard/profile.html', data=(user,comments, [dp, cover]))
+		except:
+			return render_template('dashBoard/profile.html', data=(user,comments))
 	else:
 		return redirect(url_for('.signin'))
 
