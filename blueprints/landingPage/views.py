@@ -79,9 +79,12 @@ def dashboard():
 			dp =dp.link
 			cover = dbx.files_get_temporary_link(f'/{userid}cover.jpg')
 			cover = cover.link
+			print("try")
 			return render_template('dashBoard/profile.html', data=(user,comments, [dp, cover]))
 		except:
+			print("trysfg")
 			return render_template('dashBoard/profile.html', data=(user,comments))
+
 	else:
 		return redirect(url_for('.signin'))
 
