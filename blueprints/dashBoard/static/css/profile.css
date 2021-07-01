@@ -272,9 +272,11 @@ resize: none;
 font-size: 18px;
 }
 
-tweetArea:focus{
-border-color: #1ea1f2;
-border-radius: 2px;
+#tweetArea:focus{
+  outline: none !important;
+  border:2px solid orange;
+  border-radius: 6px;
+  /* box-shadow: 0 0 10px #719ECE; */
 }
 
 

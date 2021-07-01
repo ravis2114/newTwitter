@@ -43,7 +43,8 @@
                 <div>
                     <button onclick="openEdit()" class="edit-profile">Edit profile</button>
                     <!-- LOGOUT -->
-                    <a href="{{ url_for('landingPage.logout')}}"><button class="edit-profile" type="submit">Log out</button></a>
+                    <a href="{{ url_for('landingPage.logout')}}"><button class="edit-profile" type="submit">Log
+                            out</button></a>
                 </div>
             </div>
 
@@ -87,14 +88,14 @@
                 <img src="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg" class="avatar">
                 {% endif %}
 
-                <div> 
+                <div>
                     <div class="name-user">
                         <div class="name">{{data[0][0][0]}}</div>
                         <div class="user">@{{data[0][0][1]}}</div>
                     </div>
 
                     <div class="caption">
-                       {{i[1]}}
+                        {{i[1]}}
                     </div>
                 </div>
             </div>
@@ -108,15 +109,15 @@
 
 
 
-
     <!-- Float Button -->
     <div class="floatBtn" onclick="tweetFunc()">+</div>
+
 
     <!-- New Tweet Popup -->
     <div id="tweetPopup" class="popupContainer">
         <form class="tweetContainer" method="post" action="{{ url_for('dashBoard.tweet')}}">
             <h2>Create a New Tweet</h2>
-            <textarea name="tweetArea" id="tweetArea"></textarea>
+            <textarea name="tweetArea" id="tweetArea" onfocus="this.value = this.value;" autofocus></textarea>
             <button class="tweetBtn" type='submit' onclick="sendTweet()">newTweet</button>
         </form>
     </div>
@@ -140,17 +141,31 @@
 
             <div class="picsEdit">
                 <div class="coverEdit">
-                    <img id="coverbg" onclick="coverPrev()"
-                        src="https://pbs.twimg.com/profile_banners/1022839438068469760/1614441096/1500x500" alt="">
+                    
+
+                    {% if data|length == 3 %}
+                    <img id="coverbg" onclick="coverPrev()" src="{{ data[2][1] }}" alt="">
+                    {% else %}
+                    <img id="coverbg" onclick="coverPrev()" src="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg" alt="">
+                    {% endif %}
+
 
                     <input name="cover" accept="image/*" type="file" id="myCover" style="display: none;">
 
                 </div>
-                <img id="avatarEdit" onclick="dpPrev()" class="avatarEdit"
-                    src="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg">
 
-                <!-- <h4>Add Photo</h4> -->
-                <input name="dp" accept="image/*" type="file" id="myDp" style="display: none;">
+                
+
+                {% if data|length == 3 %}
+                <img id="avatarEdit" onclick="dpPrev()" class="avatarEdit" src="{{ data[2][0] }}" alt="">
+                {% else %}
+                <img id="avatarEdit" onclick="dpPrev()" src="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg"
+                    class="avatarEdit">
+                {% endif %}
+
+
+
+                <input name=" dp" accept="image/*" type="file" id="myDp" style="display: none;">
 
             </div>
 
