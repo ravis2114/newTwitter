@@ -114,12 +114,19 @@
 
 
     <!-- New Tweet Popup -->
-    <div id="tweetPopup" class="popupContainer">
+    <div id="tweetPopup" class="popupContainer" >
+
         <form class="tweetContainer" method="post" action="{{ url_for('dashBoard.tweet')}}">
-            <h2>Create a New Tweet</h2>
+            <div style="width: 100%; display: flex;">
+                <div class="closeEdit tweet" onclick="closePopup()"><img
+                    src="https://img.icons8.com/ios/100/fa314a/close-window.png" /></div>
+                    <h2>Create a New Tweet</h2>
+            </div>
+            
             <textarea name="tweetArea" id="tweetArea" onfocus="this.value = this.value;" autofocus></textarea>
             <button class="tweetBtn" type='submit' onclick="sendTweet()">newTweet</button>
         </form>
+
     </div>
 
 
@@ -259,6 +266,10 @@
         // popup func
         function tweetFunc() {
             document.getElementById("tweetPopup").style.display = "flex";
+        }
+
+        function closePopup(){
+            document.getElementById("tweetPopup").style.display = "none";
         }
 
         // Create Post Func
