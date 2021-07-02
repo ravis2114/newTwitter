@@ -22,28 +22,44 @@ def home():
 def post():
 	if request.method=='POST':
 		userid = session['user']
-		time = datetime.datetime.now()
 
-		# if request.form['changeBio']:
-		# 	bio=request.form['changeBio']
+		if request.form['changeBio']:
+			bio=request.form['changeBio']
+			conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
+			cursor = conn.cursor()
+			cursor.execute(("UPDATE newtwitter_user SET bio='{}' WHERE userid='{}' ".format(bio, userid)))
+			conn.commit()
+		if request.form['loc']:
+			loc=request.form['loc']
+			conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
+			cursor = conn.cursor()
+			cursor.execute(("UPDATE newtwitter_user SET location='{}' WHERE userid='{}' ".format(loc, userid)))
+			conn.commit()
+		if request.form['uname']:
+			uname=request.form['uname']
+			conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
+			cursor = conn.cursor()
+			cursor.execute(("UPDATE newtwitter_user SET username='{}' WHERE userid='{}' ".format(uname, userid)))
+			conn.commit()
 
 		# if 'tweetArea' in request.form:
 		# 	post = request.form['tweetArea']
 		# 	cursor.execute(("INSERT INTO newtwitter_comment (userid, comments, toc) VALUES ('{}','{}','{}')".format(userid,post,time)))
 		# 	conn.commit()
-		if request.files['dp']:
-			dp = request.files['dp']
-			dp.save(f'static/images/{userid}.jpg')
-			im_dp = open(f'static/images/{userid}.jpg', 'rb').read()
-			dbx.files_upload(im_dp, f'/{userid}dp.jpg', mode=dropbox.files.WriteMode.overwrite)
-			os.remove(f'static/images/{userid}.jpg')
+		if request.files:
+			if request.files['dp']:
+				dp = request.files['dp']
+				dp.save(f'static/images/{userid}.jpg')
+				im_dp = open(f'static/images/{userid}.jpg', 'rb').read()
+				dbx.files_upload(im_dp, f'/{userid}dp.jpg', mode=dropbox.files.WriteMode.overwrite)
+				os.remove(f'static/images/{userid}.jpg')
 
-		if request.files['cover']:
-			cover = request.files['cover']
-			cover.save(f'static/images/{userid}.jpg')
-			im_cover = open(f'static/images/{userid}.jpg', 'rb').read()
-			dbx.files_upload(im_cover, f'/{userid}cover.jpg', mode=dropbox.files.WriteMode.overwrite)
-			os.remove(f'static/images/{userid}.jpg')
+			if request.files['cover']:
+				cover = request.files['cover']
+				cover.save(f'static/images/{userid}.jpg')
+				im_cover = open(f'static/images/{userid}.jpg', 'rb').read()
+				dbx.files_upload(im_cover, f'/{userid}cover.jpg', mode=dropbox.files.WriteMode.overwrite)
+				os.remove(f'static/images/{userid}.jpg')
 		
 		return redirect(url_for('landingPage.dashboard'))
 	return redirect(url_for('landingPage.dashboard'))
@@ -61,16 +77,3 @@ def tweet():
 			cursor.execute(("INSERT INTO newtwitter_comment (userid, comments, toc) VALUES ('{}','{}','{}')".format(userid,post,time)))
 			conn.commit()
 		return redirect(url_for('landingPage.dashboard'))
-
-		# #getting user info
-		# cursor.execute(("SELECT * FROM newtwitter_user WHERE userid='{}'".format(userid)))
-		# global user
-		# user = cursor.fetchall()
-
-		# #getting all the posts
-		# cursor.execute(("SELECT * FROM newtwitter_comment WHERE userid='{}' ORDER BY toc DESC".format(userid)))
-		# global comments
-		# comments = cursor.fetchall()
-
-		# return render_template('dashBoard/profile.html', data=(user,comments))
-		

@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ url_for('dashBoard.static', filename='css/profile.css') }}">
-    <title>Profile</title>
+    <title>Profile | {{data[0][0][0]}}</title>
+    <!-- add icon link -->
+    <link rel = "icon" href = "{{ url_for('dashBoard.static', filename='img/dp.png') }}" type = "image/x-icon"> 
 </head>
 
 <body>
@@ -53,11 +55,11 @@
                 <div class="user">@{{data[0][0][1]}}</div>
             </div>
 
-            <div>Hello, there.</div>
+            <div>{{ data[0][0][4] }}</div>
             <div>
-                <span class="secondary ml-4">📍 Bihar</span>
-                <span class="secondary ml-4">🎂 August 14</span>
-                <span class="secondary ml-4">Joined March 2021</span> </br>
+                <span class="secondary ml-4">📍 {{ data[0][0][5] }}</span>
+                <span class="secondary ml-4">🎂 {{ data[0][0][3] }}</span></br>
+                <!-- <span class="secondary ml-4">Joined March 2021</span> </br> -->
                 <a href="https://www.twitter.com/masteryoda_69" target="_blank">Twitter Link</a>
             </div>
 
@@ -181,7 +183,7 @@
                 <div class="nameEdit edits">
                     <label for="changeName ">Name
                     </label>
-                    <input id="changeName" type="text">
+                    <input name="uname" id="changeName" type="text">
                 </div>
 
                 <div class="bioEdit edits">
@@ -193,7 +195,7 @@
                 <div class="locationEdit edits">
                     <label for="changeLocation">Location
                     </label>
-                    <input id="changeLocation" type="text">
+                    <input name="loc" id="changeLocation" type="text">
                 </div>
 
                 <div class="linkEdit edits">

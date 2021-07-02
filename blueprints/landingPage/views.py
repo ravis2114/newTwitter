@@ -34,7 +34,7 @@ def home():
 			if user:
 				return redirect(url_for('.signin'))
 			else:
-				cursor.execute(("INSERT INTO newtwitter_user (username, userid, userpassword, dob) VALUES ('{}','{}','{}','{}')".format(name, userid,password,year+'-'+month+'-'+day)))
+				cursor.execute(("INSERT INTO newtwitter_user (username, userid, password, dob) VALUES ('{}','{}','{}','{}')".format(name, userid,password,year+'-'+month+'-'+day)))
 				conn.commit()
 				return redirect(url_for('.signin'))
 
@@ -58,14 +58,15 @@ def signin():
 				cursor.execute(("SELECT * FROM newtwitter_user WHERE userid='{}'".format(userid)))
 				user = cursor.fetchall()
 
-				#creating session data
-				session['user'] = user[0][1]
-
-				#checking if userid and pass match with those at database
-				if user[0][1]==userid and user[0][2]==password:
-					return redirect(url_for('.dashboard'))
-				else:
-					return render_template('landingPage/signin.html')
+				if user:
+					#checking if userid and pass match with those at database
+					if user[0][1]==userid and user[0][2]==password:
+						#creating session data
+						session['user'] = user[0][1]
+						return redirect(url_for('.dashboard'))
+					else:
+						return render_template('landingPage/signin.html')
+				return render_template('landingPage/signin.html')
 					
 		else:
 			return render_template('landingPage/signin.html')

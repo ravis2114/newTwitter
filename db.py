@@ -4,7 +4,7 @@ conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', passw
 cursor = conn.cursor()
 
 # qry=" DELETE FROM newtwitter_comment where userid='doge' "
-qry="SELECT * from newtwitter_comment"
+qry="create table twitter_user ( bio varchar(500), location varchar(25), )"
 cursor.execute((qry))
 fetch = cursor.fetchall()
 print(fetch)
