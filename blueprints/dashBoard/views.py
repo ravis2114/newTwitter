@@ -23,19 +23,19 @@ def post():
 	if request.method=='POST':
 		userid = session['user']
 
-		if request.form['changeBio']:
+		if request.form.get('changeBio', False):
 			bio=request.form['changeBio']
 			conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
 			cursor = conn.cursor()
 			cursor.execute(("UPDATE newtwitter_user SET bio='{}' WHERE userid='{}' ".format(bio, userid)))
 			conn.commit()
-		if request.form['loc']:
+		if request.form.get('loc', False):
 			loc=request.form['loc']
 			conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
 			cursor = conn.cursor()
 			cursor.execute(("UPDATE newtwitter_user SET location='{}' WHERE userid='{}' ".format(loc, userid)))
 			conn.commit()
-		if request.form['uname']:
+		if request.form.get('uname', False):
 			uname=request.form['uname']
 			conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
 			cursor = conn.cursor()
@@ -46,20 +46,19 @@ def post():
 		# 	post = request.form['tweetArea']
 		# 	cursor.execute(("INSERT INTO newtwitter_comment (userid, comments, toc) VALUES ('{}','{}','{}')".format(userid,post,time)))
 		# 	conn.commit()
-		if request.files:
-			if request.files['dp']:
-				dp = request.files['dp']
-				dp.save(f'static/images/{userid}.jpg')
-				im_dp = open(f'static/images/{userid}.jpg', 'rb').read()
-				dbx.files_upload(im_dp, f'/{userid}dp.jpg', mode=dropbox.files.WriteMode.overwrite)
-				os.remove(f'static/images/{userid}.jpg')
+		if request.files.get('dp', False):
+			dp = request.files['dp']
+			dp.save(f'static/images/{userid}.jpg')
+			im_dp = open(f'static/images/{userid}.jpg', 'rb').read()
+			dbx.files_upload(im_dp, f'/{userid}dp.jpg', mode=dropbox.files.WriteMode.overwrite)
+			os.remove(f'static/images/{userid}.jpg')
 
-			if request.files['cover']:
-				cover = request.files['cover']
-				cover.save(f'static/images/{userid}.jpg')
-				im_cover = open(f'static/images/{userid}.jpg', 'rb').read()
-				dbx.files_upload(im_cover, f'/{userid}cover.jpg', mode=dropbox.files.WriteMode.overwrite)
-				os.remove(f'static/images/{userid}.jpg')
+		if request.files.get('cover', False):
+			cover = request.files['cover']
+			cover.save(f'static/images/{userid}.jpg')
+			im_cover = open(f'static/images/{userid}.jpg', 'rb').read()
+			dbx.files_upload(im_cover, f'/{userid}cover.jpg', mode=dropbox.files.WriteMode.overwrite)
+			os.remove(f'static/images/{userid}.jpg')
 		
 		return redirect(url_for('landingPage.dashboard'))
 	return redirect(url_for('landingPage.dashboard'))
