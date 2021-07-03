@@ -18,7 +18,7 @@ def home():
 		return redirect(url_for('.dashboard'))
 	else:
 		if request.method=='POST':
-			if request.form.get('name', False) and request.form.get('userid', False), request.form.get('password', False), request.form.get('month', False), request.form.get('day', False), request.form.get('year', False):
+			if request.form.get('name', False) and request.form.get('userid', False) and request.form.get('password', False) and request.form.get('month', False) and request.form.get('day', False) and request.form.get('year', False):
 				name=request.form['name']
 				userid = request.form['userid']
 				password = request.form['password']
