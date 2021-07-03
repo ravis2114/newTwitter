@@ -18,27 +18,28 @@ def home():
 		return redirect(url_for('.dashboard'))
 	else:
 		if request.method=='POST':
-			name=request.form['name']
-			userid = request.form['userid']
-			password = request.form['password']
-			month = request.form['month']
-			day = request.form['day']
-			year= request.form['year']
-			#print(type(name), type(phoneNumber), type(password), type(month), type(day), type(year)) #all values are string
+			if request.form.get('name', False) and request.form.get('userid', False), request.form.get('password', False), request.form.get('month', False), request.form.get('day', False), request.form.get('year', False):
+				name=request.form['name']
+				userid = request.form['userid']
+				password = request.form['password']
+				month = request.form['month']
+				day = request.form['day']
+				year= request.form['year']
+				#print(type(name), type(phoneNumber), type(password), type(month), type(day), type(year)) #all values are string
 
-			conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
-			cursor = conn.cursor()
-			cursor.execute((" SELECT * FROM newtwitter_user WHERE userid='{}' ".format(userid)))
-			user = cursor.fetchall()
+				conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
+				cursor = conn.cursor()
+				cursor.execute((" SELECT * FROM newtwitter_user WHERE userid='{}' ".format(userid)))
+				user = cursor.fetchall()
 
-			if user:
-				return redirect(url_for('.signin'))
-			else:
-				cursor.execute(("INSERT INTO newtwitter_user (username, userid, password, dob) VALUES ('{}','{}','{}','{}')".format(name, userid,password,year+'-'+month+'-'+day)))
-				conn.commit()
-				return redirect(url_for('.signin'))
+				if user:
+					return redirect(url_for('.signin'))
+				else:
+					cursor.execute(("INSERT INTO newtwitter_user (username, userid, password, dob) VALUES ('{}','{}','{}','{}')".format(name, userid,password,year+'-'+month+'-'+day)))
+					conn.commit()
+					return redirect(url_for('.signin'))
 
-			return render_template('landingPage/newTwitter.html')
+				return render_template('landingPage/newTwitter.html')
 		return render_template('landingPage/newTwitter.html')
 
 @landingPage.route('/signin', methods=['POST', 'GET'])
@@ -49,7 +50,7 @@ def signin():
 		return redirect(url_for('.dashboard'))
 	else:
 		if request.method=='POST':
-			if request.form['userid'] and request.form['password']:
+			if request.form.get('userid', False) and request.form.get('password', False):
 				userid = request.form['userid']
 				password = request.form['password']
 				
