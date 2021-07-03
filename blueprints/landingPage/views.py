@@ -68,6 +68,7 @@ def signin():
 					else:
 						return render_template('landingPage/signin.html')
 				return render_template('landingPage/signin.html')
+			return render_template('landingPage/signin.html')
 					
 		else:
 			return render_template('landingPage/signin.html')
