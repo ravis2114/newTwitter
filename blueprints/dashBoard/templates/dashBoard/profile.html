@@ -8,7 +8,12 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('dashBoard.static', filename='css/profile.css') }}">
     <title>Profile | {{data[0][0][0]}}</title>
     <!-- add icon link -->
-    <link style="border-radius: 50%;" rel = "icon" href = "{{ data[2][0] }}" type="image">
+    {% if data|length == 3 %}
+    <link rel="icon" href="{{ data[2][0] }}" type="image">
+    {% else %}
+    <link  rel="icon" href="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg" type="image">
+    {% endif %}
+    
 </head>
 
 <body>
@@ -21,6 +26,7 @@
             <div class="header">{{data[0][0][0]}}</div>
             <div class="subtext">{{ data[1]|length }} new tweets</div>
         </div>
+        
         <!--   Cover -->
         <div class="cover">
             {% if data|length == 3 %}
@@ -80,6 +86,7 @@
 
 
         <!-- Infinit Feed -->
+        {% if data[1]|length > 0 %}
         {% for i in data[1] %}
         <div class="feed" id="feed">
             <div class="userid">
@@ -87,7 +94,7 @@
                 {% if data|length == 3 %}
                 <img class="avatar-mini" src="{{ data[2][0] }}" alt="">
                 {% else %}
-                <img src="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg" class="avatar">
+                <img src="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg" class="avatar-mini">
                 {% endif %}
 
                 <div>
@@ -103,6 +110,7 @@
             </div>
         </div>
         {% endfor %}
+        {% endif %}
 
 
 
@@ -116,15 +124,15 @@
 
 
     <!-- New Tweet Popup -->
-    <div id="tweetPopup" class="popupContainer" >
+    <div id="tweetPopup" class="popupContainer">
 
         <form class="tweetContainer" method="post" action="{{ url_for('dashBoard.tweet')}}">
             <div style="width: 100%; display: flex;">
                 <div class="closeEdit tweet" onclick="closePopup()"><img
-                    src="https://img.icons8.com/ios/100/fa314a/close-window.png" /></div>
-                    <h2>Create a New Tweet</h2>
+                        src="https://img.icons8.com/ios/100/fa314a/close-window.png" /></div>
+                <h2>Create a New Tweet</h2>
             </div>
-            
+
             <textarea name="tweetArea" id="tweetArea" onfocus="this.value = this.value;" autofocus></textarea>
             <button class="tweetBtn" type='submit' onclick="sendTweet()">newTweet</button>
         </form>
@@ -150,12 +158,13 @@
 
             <div class="picsEdit">
                 <div class="coverEdit">
-                    
+
 
                     {% if data|length == 3 %}
                     <img id="coverbg" onclick="coverPrev()" src="{{ data[2][1] }}" alt="">
                     {% else %}
-                    <img id="coverbg" onclick="coverPrev()" src="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg" alt="">
+                    <img id="coverbg" onclick="coverPrev()"
+                        src="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg" alt="">
                     {% endif %}
 
 
@@ -163,12 +172,13 @@
 
                 </div>
 
-                
+
 
                 {% if data|length == 3 %}
                 <img id="avatarEdit" onclick="dpPrev()" class="avatarEdit" src="{{ data[2][0] }}" alt="">
                 {% else %}
-                <img id="avatarEdit" onclick="dpPrev()" src="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg"
+                <img id="avatarEdit" onclick="dpPrev()"
+                    src="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg"
                     class="avatarEdit">
                 {% endif %}
 
@@ -270,7 +280,7 @@
             document.getElementById("tweetPopup").style.display = "flex";
         }
 
-        function closePopup(){
+        function closePopup() {
             document.getElementById("tweetPopup").style.display = "none";
         }
 
@@ -318,7 +328,7 @@
 
     </script>
 
-    <!-- Script -->
+    
     <script>
         function main() {
             const arrow = document.querySelector('.arrow');
@@ -328,6 +338,7 @@
         window.addEventListener("load", main);
 
     </script>
+
 
 </body>
 

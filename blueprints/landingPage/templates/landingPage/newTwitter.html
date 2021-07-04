@@ -57,30 +57,30 @@
                 <!-- Header -->
                 <div class="modal-header border-0 p-0 px-2 pt-2">
                     <div class="" style="width: 100%; text-align: center;">
-                        <img class="img-fluid " src="twitter-512.png"
+                        <img class="img-fluid " src="{{url_for('landingPage.static', filename='img/twitter-512.png')}}"
                             style="filter: invert(1); width: 30px; height: 35px;" alt="">
                     </div>
                     <button type="button" class="btn-close mr-1 bg-secondary text-light" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-header border-0 p-0 px-3 py-1">
+                <div class="modal-header border-0 p-0 px-3 pt-3 pb-4">
                     <h5 class="modal-title fw-bolder" id="formModal">Create Your Account</h5>
                 </div>
 
                 <!-- Body -->
-                <div class="modal-body border-0 text-primary py-5">
+                <div class="modal-body border-0 text-primary pt-3 pb-5">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control border-muted" id="nameInput" placeholder="Name"
-                            style="background-color: black;">
+                        <input type="text" class="form-control border-muted text-white" name="name" id="nameInput" placeholder="Name"
+                            style="background-color: black;" required">
                         <label for="nameInput" class="text-white">Name</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control border-muted" id="uidInput" placeholder="Username"
-                            style="background-color: black;">
+                        <input type="text" class="form-control border-muted text-white" name="userid" id="uidInput" placeholder="Username"
+                            style="background-color: black;" required">
                         <label for="uidInput" class="text-white">Username</label>
                     </div>
                     <div class="form-floating">
-                        <input type="password" class="form-control border-muted" id="passInput" placeholder="Password"
-                            style="background-color: black;">
+                        <input type="password" class="form-control border-muted text-white" name="password" id="passInput" placeholder="Password"
+                            style="background-color: black;" required">
                         <label for="passInput" class="text-white">Password</label>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                 
                 <div class="row p-1 m-0 mb-5" id="dob">
 
-                    <div class="form-floating col-6  ">
+                    <div class="form-floating col-4 ">
                         <select class="form-select text-white" name="month" id="month"
                             aria-label="Floating label select Month text-white " style="background-color: black;">
                             <option value="1">Jan</option>
@@ -109,7 +109,7 @@
                         <label for="monthInput">Month</label>
                     </div>
 
-                    <div class="form-floating col-3 ">
+                    <div class="form-floating col-4 ">
                         <select class="form-select text-white" name="day" id="day"
                             aria-label="Floating label select Day text-white px-2" style="background-color: black;">
                             <option value="01">01</option>
@@ -147,7 +147,7 @@
                         <label for="dayInput">Day</label>
                     </div>
 
-                    <div class="form-floating col-3 text-white">
+                    <div class="form-floating col-4 text-white">
                         <select class="form-select text-white" name="year" id="year"
                             aria-label="Floating label select Year text-light " style="background-color: black;">
                             <option value="2021">2021</option>
