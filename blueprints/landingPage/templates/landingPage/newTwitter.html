@@ -6,8 +6,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Twitter</title>
+    <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- jQUERY -->
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(()=>{
+            $("#formContainer").on('shown.bs.modal', function(){
+                $(this).find('#nameInput').focus();
+            });
+        });
+        </script>
+    <style>
+        input:-webkit-autofill,
+        input:-webkit-autofill:focus {
+            -webkit-text-fill-color: white;
+            -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+        }
+    </style>
+
 </head>
 
 <body class="bg-dark text-white" style="box-sizing: border-box; padding: 0; margin: 0;">
@@ -18,10 +37,12 @@
             class="container d-flex h-100 bg-md align-items-center col-md-6 order-md-2 text-center justify-content-center">
 
             <div class="d-flex flex-column align-center text-center justify-content-center" id="info">
-                <img src="{{url_for('landingPage.static', filename='img/img.png')}}" style="width:50px; height:50px;" class="mx-auto my-2">
+                <img src="{{url_for('landingPage.static', filename='img/img.png')}}" style="width:50px; height:50px;"
+                    class="mx-auto my-2">
                 <h1>Happening Now.</h1>
                 <h2>Join newTwitter today.</h2>
-                <a href="{{url_for('.signin')}}" role="button" class="btn btn-block btn-primary rounded-pill my-3" id="login">Log
+                <a href="{{url_for('.signin')}}" role="button" class="btn btn-block btn-primary rounded-pill my-3"
+                    id="login">Log
                     In</a>
                 <button class="btn btn-primary btn-block rounded-pill" data-bs-toggle="modal"
                     data-bs-target="#formContainer">Sign Up</button>
@@ -60,7 +81,8 @@
                         <img class="img-fluid " src="{{url_for('landingPage.static', filename='img/twitter-512.png')}}"
                             style="filter: invert(1); width: 30px; height: 35px;" alt="">
                     </div>
-                    <button type="button" class="btn-close mr-1 bg-secondary text-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close mr-1 bg-secondary text-light" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-header border-0 p-0 px-3 pt-3 pb-4">
                     <h5 class="modal-title fw-bolder" id="formModal">Create Your Account</h5>
@@ -69,25 +91,25 @@
                 <!-- Body -->
                 <div class="modal-body border-0 text-primary pt-3 pb-5">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control border-muted text-white" name="name" id="nameInput" placeholder="Name"
-                            style="background-color: black;" required">
+                        <input type="text" class="form-control border-muted text-white" name="name" id="nameInput"
+                            placeholder="Name" style="background-color: black;" required autofocus>
                         <label for="nameInput" class="text-white">Name</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control border-muted text-white" name="userid" id="uidInput" placeholder="Username"
-                            style="background-color: black;" required">
+                        <input type="text" class="form-control border-muted text-white" name="userid" id="uidInput"
+                            placeholder="Username" style="background-color: black;" required>
                         <label for="uidInput" class="text-white">Username</label>
                     </div>
                     <div class="form-floating">
-                        <input type="password" class="form-control border-muted text-white" name="password" id="passInput" placeholder="Password"
-                            style="background-color: black;" required">
+                        <input type="password" class="form-control border-muted text-white" name="password"
+                            id="passInput" placeholder="Password" style="background-color: black;" required>
                         <label for="passInput" class="text-white">Password</label>
                     </div>
                 </div>
 
                 <!-- DOB -->
                 <h6 class="px-3">Date of birth</h6>
-                
+
                 <div class="row p-1 m-0 mb-5" id="dob">
 
                     <div class="form-floating col-4 ">
@@ -144,7 +166,7 @@
                             <option value="30">30</option>
                             <option value="31">31</option>
                         </select>
-                        <label for="dayInput">Day</label>
+                        <label for="dayInput" class="pl-3">Day</label>
                     </div>
 
                     <div class="form-floating col-4 text-white">
@@ -279,13 +301,13 @@
                 </div>
 
                 <!-- Footer -->
-                    <button class="btn btn-primary border border-primary rounded-pill my-4 mt-8 p-1 text-center"
+                <button class="btn btn-primary border border-primary rounded-pill my-4 mt-8 p-1 text-center"
                     data-bs-dismiss="modal">Sign Up</button>
 
             </form>
         </div>
 
-        
+
     </div>
 
 

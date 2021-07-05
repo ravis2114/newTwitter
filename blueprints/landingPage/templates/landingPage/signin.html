@@ -11,7 +11,17 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
   <title>Log in - newTwitter</title>
+
+  <style>
+    input:-webkit-autofill,
+    input:-webkit-autofill:focus {
+      -webkit-text-fill-color: white;
+      -webkit-box-shadow: 0 0 0px 1000px #212529 inset;
+    }
+  </style>
+
 </head>
+
 
 <body class="bg-dark">
 
@@ -34,7 +44,7 @@
 
           <div class="form-floating my-4 mx-2">
             <input type="text" class="form-control border-muted bg-dark text-white" name="userid" id="loginId"
-              placeholder="username" required>
+              placeholder="username" required autofocus>
             <label for="loginId" class="text-white">username</label>
           </div>
 
@@ -44,11 +54,14 @@
             <label for="loginPass" class="text-white">Password</label>
           </div>
 
-          <button type="submit" class="btn btn-block btn-primary w-100 text-white fw-bolder rounded-pill py-2  my-4">Log in</button>
+          <button type="submit" class="btn btn-block btn-primary w-100 text-white fw-bolder rounded-pill py-2  my-4">Log
+            in</button>
 
         </form>
 
-        <a href="{{url_for('landingPage.home')}}"><h1 class="small text-primary text-center">Sign up for newTwitter</h1></a>
+        <a href="{{url_for('landingPage.home')}}">
+          <h1 class="small text-primary text-center">Sign up for newTwitter</h1>
+        </a>
 
 
       </div>
