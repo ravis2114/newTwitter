@@ -9,6 +9,6 @@ cursor = conn.cursor()
 # fetch = cursor.fetchall()
 # print(fetch)
 
-cursor.execute(("SELECT * FROM newtwitter_comment WHERE userid='{}' ORDER BY toc DESC".format('test')))
+cursor.execute(("SELECT * FROM newtwitter_user WHERE userid='{}' ".format('ravi123')))
 comments = cursor.fetchall()
 print(comments)
