@@ -9,10 +9,12 @@
     <title>Profile | {{data[0][0][0]}}</title>
     <!-- add icon link -->
     {% if data|length == 3 %}
-    <link style="border-radius: 50%;" rel="icon" href="{{ data[2][0] }}" type="image">
+
+    <link rel="icon" href="{{ data[2][0] }}" type="image">
     {% else %}
-    <link style="border-radius: 50%;" href="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg" type="image">
+    <link  rel="icon" href="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg" type="image">
     {% endif %}
+    
 </head>
 
 <body>
@@ -25,6 +27,7 @@
             <div class="header">{{data[0][0][0]}}</div>
             <div class="subtext">{{ data[1]|length }} new tweets</div>
         </div>
+        
         <!--   Cover -->
         <div class="cover">
             {% if data|length == 3 %}
@@ -76,7 +79,7 @@
         <!--   Tabs start     -->
         <div class="tabs" id="tabs">
             <div class="selected">Tweets</div>
-            <div>Teets & Replies</div>
+            <div>newTweets & Replies</div>
             <div>Media</div>
             <div>Links</div>
         </div>
@@ -92,7 +95,7 @@
                 {% if data|length == 3 %}
                 <img class="avatar-mini" src="{{ data[2][0] }}" alt="">
                 {% else %}
-                <img src="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg" class="avatar">
+                <img src="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg" class="avatar-mini">
                 {% endif %}
 
                 <div>
@@ -326,7 +329,7 @@
 
     </script>
 
-    <!-- Script -->
+    
     <script>
         function main() {
             const arrow = document.querySelector('.arrow');
@@ -336,6 +339,7 @@
         window.addEventListener("load", main);
 
     </script>
+
 
 </body>
 
