@@ -41,6 +41,12 @@ def post():
 			cursor = conn.cursor()
 			cursor.execute(("UPDATE newtwitter_user SET username='{}' WHERE userid='{}' ".format(uname, userid)))
 			conn.commit()
+		if request.form.get('linkbio', False):
+			linkbio=request.form['linkbio']
+			conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
+			cursor = conn.cursor()
+			cursor.execute(("UPDATE newtwitter_user SET ext_link='{}' WHERE userid='{}' ".format(linkbio, userid)))
+			conn.commit()
 
 		# if 'tweetArea' in request.form:
 		# 	post = request.form['tweetArea']
