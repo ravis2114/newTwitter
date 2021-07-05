@@ -9,6 +9,7 @@
     <title>Profile | {{data[0][0][0]}}</title>
     <!-- add icon link -->
     {% if data|length == 3 %}
+
     <link rel="icon" href="{{ data[2][0] }}" type="image">
     {% else %}
     <link  rel="icon" href="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg" type="image">
@@ -86,7 +87,7 @@
 
 
         <!-- Infinit Feed -->
-        {% if data[1]|length > 0 %}
+        {% if data[1]|length >0 %}
         {% for i in data[1] %}
         <div class="feed" id="feed">
             <div class="userid">
