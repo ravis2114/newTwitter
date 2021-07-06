@@ -3,7 +3,7 @@ This open-source project is inspired by twitter architecture. functionalities wi
 
 ### Sign up newTwitter
 ----
-![Sign up](https://github.com/ravis2114/newTwitter/blob/master/utils/img6.png) ![Sign up Mobile](https://github.com/ravis2114/newTwitter/blob/master/utils/img7.jpeg) ![Sign up](https://github.com/ravis2114/newTwitter/blob/master/utils/img8.png)
+![Sign up](https://github.com/ravis2114/newTwitter/blob/master/utils/img6.png) ![Sign up](https://github.com/ravis2114/newTwitter/blob/master/utils/img8.png)
 
 
 
