@@ -22,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('dashBoard.static', filename='css/profile.css') }}">
 
     <!-- jQUERY -->
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
         integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
@@ -31,7 +31,17 @@
                 $(this).find('#tweetArea').val('');
             });
         });
-    </script>
+    </script> -->
+
+
+    <style>
+        input:-webkit-autofill,
+        input:-webkit-autofill:focus {
+            -webkit-text-fill-color: white;
+            -webkit-box-shadow: 0 0 0px 1000px black inset;
+        }
+    </style>
+
 
 </head>
 
@@ -187,7 +197,7 @@
                         <form class="tweetContainer" method="post" action="{{ url_for('dashBoard.tweet')}}">
 
                             <div class="form-floating">
-                                <textarea name="tweetArea" class="form-control w-100 text-white" id="tweetArea"
+                                <textarea name="tweetArea" class="form-control w-100 text-white" id="tweetArea" placeholder="write your newTweet"
                                     style="resize: none; background-color: black;"></textarea>
                                 <label for="floatingTextarea2">write your newTweet</label>
                             </div>
@@ -215,8 +225,9 @@
 
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 
-                <form class="modal-content border-0 text-white" enctype="multipart/form-data" action="{{url_for('dashBoard.post')}}" method="post""
-                    style="background-color: black;">
+                <form class="modal-content border-0 text-white" enctype="multipart/form-data"
+                    action="{{url_for('dashBoard.post')}}" method="post""
+                    style=" background-color: black;">
 
                     <div class="modal-header border-0">
                         <h5 class="modal-title" id="editHeader">Edit Profile</h5>
