@@ -64,7 +64,7 @@ def signin():
 					if user[0][1]==userid and user[0][2]==password:
 						#creating session data
 						session['user'] = user[0][1]
-						return redirect(url_for('.dashboard'))
+						return redirect(url_for('.feed'))
 					else:
 						return render_template('landingPage/signin.html')
 				return render_template('landingPage/signin.html')
@@ -95,6 +95,11 @@ def dashboard():
 
 	else:
 		return redirect(url_for('.signin'))
+
+@landingPage.route('/home', methods=['GET', 'POST'])
+def feed():
+	if "user" in session:
+		return render_template('dashBoard/homepage.html')
 
 @landingPage.route('/logout', methods=['POST', 'GET'])
 def logout():
