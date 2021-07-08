@@ -15,7 +15,7 @@ landingPage = Blueprint('landingPage',__name__, template_folder='templates', sta
 @landingPage.route('/', methods=['POST', 'GET'])
 def home():
 	if "user" in session:
-		return redirect(url_for('.dashboard'))
+		return redirect(url_for('.feed'))
 	else:
 		if request.method=='POST':
 			if request.form.get('name', False) and request.form.get('userid', False) and request.form.get('password', False) and request.form.get('month', False) and request.form.get('day', False) and request.form.get('year', False):
@@ -47,7 +47,7 @@ def signin():
 	# return render_template('landingPage/signin.html')
 
 	if "user" in session:
-		return redirect(url_for('.dashboard'))
+		return redirect(url_for('.feed'))
 	else:
 		if request.method=='POST':
 			if request.form.get('userid', False) and request.form.get('password', False):
