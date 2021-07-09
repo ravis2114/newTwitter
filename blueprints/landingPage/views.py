@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, session, redirect, url_for, request
 import mysql.connector
 import dropbox
+import random
 
 dropbox_access_token= "xogv50OrMysAAAAAAAAAAZLNZRmAmZXik0U4xaF6EoWmQlFMPiDuw6JmfxzDWTiF"
 dropbox_path= "/Apps/newTwitter"
@@ -99,7 +100,13 @@ def dashboard():
 @landingPage.route('/home', methods=['GET', 'POST'])
 def feed():
 	if "user" in session:
-		return render_template('dashBoard/homepage.html')
+		conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
+		cursor = conn.cursor()
+		cursor.execute(("SELECT newtwitter_comment.userid, newtwitter_user.username, newtwitter_comment.comments, newtwitter_comment.toc FROM newtwitter_comment INNER JOIN newtwitter_user ON newtwitter_comment.userid=newtwitter_user.userid"))
+		user_data = cursor.fetchall()
+		random.shuffle(user_data)
+		return render_template('dashBoard/homepage.html', data=(user_data))
+	return redirect(url_for('.signin'))
 
 @landingPage.route('/logout', methods=['POST', 'GET'])
 def logout():

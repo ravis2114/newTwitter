@@ -30,28 +30,62 @@
             <div class="newpost d-flex bg-dark py-2 m-0">
                 <div>
                     <a class="avatarmini px-3" href="{{url_for('landingPage.dashboard')}}">
-                        {% if data|length == 3 %}
+                        <!-- {% if data|length == 3 %}
                         <img class="avatar-mini" src="{{ data[2][0] }}" alt="">
-                        {% else %}
-                        <img src="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg"
+                        {% else %} -->
+                        <!-- <img src="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg"
+                            class="avatar-mini"> -->
+                        <!-- {% endif %} -->
+                        <img src="https://ipfs.io/ipfs/QmWeRz3sDVJaR9PuAVpdJX7GmcVWY37PxdQg43kE6K34vc?filename=whatsapp-dp-pic-24-scaled.jpg"
                             class="avatar-mini">
-                        {% endif %}
                     </a>
                 </div>
 
                 <div class="w-100 pe-3">
 
                     <div>
-                        <textarea id="newtextarea" onkeydown="btnclr()" name="newtextarea" class="h5 text-white pt-2 w-100 bg-dark border-0" placeholder="What's happening?"></textarea>
+                        <textarea id="newtextarea" onkeydown="btnclr()" name="newtextarea"
+                            class="h5 text-white pt-2 w-100 bg-dark border-0"
+                            placeholder="What's happening?"></textarea>
                     </div>
                     <div class="text-end">
                         <button id="newtweet" class="newtweet justify-content-end">newTweet</button>
                     </div>
-            
+
                 </div>
+
+
             </div>
 
-            
+            <!-- Infinit Feed -->
+            {% if data|length >0 %}
+            {% for i in data %}
+            <div class="feed bg-dark text-white" id="feed">
+                <div class="userid">
+                    <!-- <div class="avatar-mini"></div> -->
+                    <!-- {% if data|length == 3 %}
+                    <img class="avatar-mini" src="{{ data[2][0] }}" alt="">
+                    {% else %} -->
+                    <img src="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg"
+                        class="avatar-mini">
+                    <!-- {% endif %} -->
+
+                    <div>
+                        <div class="name-user">
+                            <div class="name">{{ i[1] }}</div>
+                            <div class="user">@{{ i[0] }}</div>
+                        </div>
+
+                        <div class="caption">
+                            {{i[2]}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+
+
         </div>
     </div>
 
@@ -60,9 +94,9 @@
 
 
     <script>
-        function btnclr(){
+        function btnclr() {
 
-            document.getElementById('newtweet').style.opacity='1'
+            document.getElementById('newtweet').style.opacity = '1'
 
         }
     </script>
