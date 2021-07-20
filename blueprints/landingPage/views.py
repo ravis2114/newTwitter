@@ -28,7 +28,7 @@ def home():
 				year= request.form['year']
 				#print(type(name), type(phoneNumber), type(password), type(month), type(day), type(year)) #all values are string
 
-				conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
+				conn = mysql.connector.connect(host='database-404.cljpc2llv9ft.ap-south-1.rds.amazonaws.com',user='admin', password='admin2114', database='newtwitter')
 				cursor = conn.cursor()
 				cursor.execute((" SELECT * FROM newtwitter_user WHERE userid='{}' ".format(userid)))
 				user = cursor.fetchall()
@@ -55,7 +55,7 @@ def signin():
 				userid = request.form['userid']
 				password = request.form['password']
 				
-				conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
+				conn = mysql.connector.connect(host='database-404.cljpc2llv9ft.ap-south-1.rds.amazonaws.com',user='admin', password='admin2114', database='newtwitter')
 				cursor = conn.cursor()
 				cursor.execute(("SELECT * FROM newtwitter_user WHERE userid='{}'".format(userid)))
 				user = cursor.fetchall()
@@ -78,7 +78,7 @@ def signin():
 def dashboard():
 	if "user" in session:
 		userid = session['user']
-		conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
+		conn = mysql.connector.connect(host='database-404.cljpc2llv9ft.ap-south-1.rds.amazonaws.com',user='admin', password='admin2114', database='newtwitter')
 		cursor = conn.cursor()
 		cursor.execute(("SELECT * FROM newtwitter_user WHERE userid='{}'".format(userid)))
 		user = cursor.fetchall()
@@ -100,7 +100,7 @@ def dashboard():
 @landingPage.route('/home', methods=['GET', 'POST'])
 def feed():
 	if "user" in session:
-		conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
+		conn = mysql.connector.connect(host='database-404.cljpc2llv9ft.ap-south-1.rds.amazonaws.com',user='admin', password='admin2114', database='newtwitter')
 		cursor = conn.cursor()
 		cursor.execute(("SELECT newtwitter_comment.userid, newtwitter_user.username, newtwitter_comment.comments, newtwitter_comment.toc FROM newtwitter_comment INNER JOIN newtwitter_user ON newtwitter_comment.userid=newtwitter_user.userid"))
 		user_data = cursor.fetchall()

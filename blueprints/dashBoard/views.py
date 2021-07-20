@@ -25,25 +25,25 @@ def post():
 
 		if request.form.get('changeBio', False):
 			bio=request.form['changeBio']
-			conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
+			conn = mysql.connector.connect(host='database-404.cljpc2llv9ft.ap-south-1.rds.amazonaws.com',user='admin', password='admin2114', database='newtwitter')
 			cursor = conn.cursor()
 			cursor.execute(("UPDATE newtwitter_user SET bio='{}' WHERE userid='{}' ".format(bio, userid)))
 			conn.commit()
 		if request.form.get('loc', False):
 			loc=request.form['loc']
-			conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
+			conn = mysql.connector.connect(host='database-404.cljpc2llv9ft.ap-south-1.rds.amazonaws.com',user='admin', password='admin2114', database='newtwitter')
 			cursor = conn.cursor()
 			cursor.execute(("UPDATE newtwitter_user SET location='{}' WHERE userid='{}' ".format(loc, userid)))
 			conn.commit()
 		if request.form.get('uname', False):
 			uname=request.form['uname']
-			conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
+			conn = mysql.connector.connect(host='database-404.cljpc2llv9ft.ap-south-1.rds.amazonaws.com',user='admin', password='admin2114', database='newtwitter')
 			cursor = conn.cursor()
 			cursor.execute(("UPDATE newtwitter_user SET username='{}' WHERE userid='{}' ".format(uname, userid)))
 			conn.commit()
 		if request.form.get('linkbio', False):
 			linkbio=request.form['linkbio']
-			conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
+			conn = mysql.connector.connect(host='database-404.cljpc2llv9ft.ap-south-1.rds.amazonaws.com',user='admin', password='admin2114', database='newtwitter')
 			cursor = conn.cursor()
 			cursor.execute(("UPDATE newtwitter_user SET ext_link='{}' WHERE userid='{}' ".format(linkbio, userid)))
 			conn.commit()
@@ -77,7 +77,7 @@ def tweet():
 
 		if 'tweetArea' in request.form:
 			post = request.form['tweetArea']
-			conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
+			conn = mysql.connector.connect(host='database-404.cljpc2llv9ft.ap-south-1.rds.amazonaws.com',user='admin', password='admin2114', database='newtwitter')
 			cursor = conn.cursor()
 			cursor.execute(("INSERT INTO newtwitter_comment (userid, comments, toc) VALUES ('{}','{}','{}')".format(userid,post,time)))
 			conn.commit()
