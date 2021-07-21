@@ -171,6 +171,8 @@ a:hover {
         /* margin: 13px 2px; */
         padding: 13px 0;
         border:  1px;
+        border-bottom: 0.2px solid gray;
+
     }
     .userid{
         display: flex;

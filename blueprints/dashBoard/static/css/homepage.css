@@ -2,6 +2,7 @@ body{
   margin: 0;
   padding: 0;
 }
+
 *{
   margin: 0;
   padding: 0;
@@ -13,6 +14,7 @@ body{
 
 .newpost{
   border-top: 0.5px solid gray;
+  border-bottom: 0.5px solid gray;
 }
 
 .avatar-mini{
@@ -52,9 +54,8 @@ body{
  .feed{
   display: flex;
   flex-direction: column;
-  /* margin: 13px 2px; */
-  padding: 13px 0;
-  border:  1px;
+  padding: 14px 5px;
+  border-top: 0.2px solid gray;
 }
 .userid{
   display: flex;

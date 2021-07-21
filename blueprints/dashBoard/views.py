@@ -89,4 +89,15 @@ def tweet():
 			cursor = conn.cursor()
 			cursor.execute(("INSERT INTO newtwitter_comment (userid, comments, toc) VALUES ('{}','{}','{}')".format(userid,post,time)))
 			conn.commit()
-		return redirect(url_for('landingPage.dashboard'))
+			return redirect(url_for('landingPage.dashboard'))
+
+
+		if 'newTweet' in request.form:
+			post = request.form['newTweet']
+			conn = mysql.connector.connect(host='database-404.cljpc2llv9ft.ap-south-1.rds.amazonaws.com',user='admin', password='admin2114', database='newtwitter')
+			cursor = conn.cursor()
+			cursor.execute(("INSERT INTO newtwitter_comment (userid, comments, toc) VALUES ('{}','{}','{}')".format(userid,post,time)))
+			conn.commit()
+			return redirect(url_for('landingPage.feed'))
+	
+	return redirect(url_for('landingPage.feed'))
