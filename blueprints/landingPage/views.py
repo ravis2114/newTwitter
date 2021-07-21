@@ -102,10 +102,14 @@ def feed():
 	if "user" in session:
 		conn = mysql.connector.connect(host='database-404.cljpc2llv9ft.ap-south-1.rds.amazonaws.com',user='admin', password='admin2114', database='newtwitter')
 		cursor = conn.cursor()
-		cursor.execute(("SELECT newtwitter_comment.userid, newtwitter_user.username, newtwitter_comment.comments, newtwitter_comment.toc FROM newtwitter_comment INNER JOIN newtwitter_user ON newtwitter_comment.userid=newtwitter_user.userid"))
+		cursor.execute(("SELECT newtwitter_comment.userid, newtwitter_user.username, newtwitter_comment.comments, newtwitter_comment.toc, newtwitter_user.dp_link FROM newtwitter_comment INNER JOIN newtwitter_user ON newtwitter_comment.userid=newtwitter_user.userid"))
 		user_data = cursor.fetchall()
 		random.shuffle(user_data)
-		return render_template('dashBoard/homepage.html', data=(user_data))
+
+		#user_info
+		cursor.execute((" SELECT * FROM newtwitter_user where userid='{}' ".format(session['user'])))
+		user_info = cursor.fetchall()
+		return render_template('dashBoard/homepage.html', data=(user_data), user_info =user_info)
 	return redirect(url_for('.signin'))
 
 @landingPage.route('/logout', methods=['POST', 'GET'])

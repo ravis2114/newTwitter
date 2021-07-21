@@ -58,6 +58,14 @@ def post():
 			im_dp = open(f'static/images/{userid}.jpg', 'rb').read()
 			dbx.files_upload(im_dp, f'/{userid}dp.jpg', mode=dropbox.files.WriteMode.overwrite)
 			os.remove(f'static/images/{userid}.jpg')
+			#get link to save in user table
+			dp = dbx.files_get_temporary_link(f'/{userid}dp.jpg')
+			dp =dp.link
+			conn = mysql.connector.connect(host='database-404.cljpc2llv9ft.ap-south-1.rds.amazonaws.com',user='admin', password='admin2114', database='newtwitter')
+			cursor = conn.cursor()
+			cursor.execute(("UPDATE newtwitter_user SET dp_link='{}' WHERE userid='{}' ".format(dp, userid)))
+			conn.commit()
+
 
 		if request.files.get('cover', False):
 			cover = request.files['cover']
