@@ -3,9 +3,9 @@ import mysql.connector
 import dropbox
 import random
 
-dropbox_access_token= "xogv50OrMysAAAAAAAAAAZLNZRmAmZXik0U4xaF6EoWmQlFMPiDuw6JmfxzDWTiF"
-dropbox_path= "/Apps/newTwitter"
-dbx = dropbox.Dropbox(dropbox_access_token)
+# dropbox_access_token= "xogv50OrMysAAAAAAAAAAZLNZRmAmZXik0U4xaF6EoWmQlFMPiDuw6JmfxzDWTiF"
+# dropbox_path= "/Apps/newTwitter"
+# dbx = dropbox.Dropbox(dropbox_access_token)
 
 
 # conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
@@ -86,10 +86,13 @@ def dashboard():
 		cursor.execute(("SELECT * FROM newtwitter_comment WHERE userid='{}' ORDER BY toc DESC".format(userid)))
 		comments = cursor.fetchall()
 		try:
-			dp = dbx.files_get_temporary_link(f'/{userid}dp.jpg')
-			dp =dp.link
-			cover = dbx.files_get_temporary_link(f'/{userid}cover.jpg')
-			cover = cover.link
+			# dp = dbx.files_get_temporary_link(f'/{userid}dp.jpg')
+			# dp =dp.link
+			dp = user[0][7]
+			# cover = dbx.files_get_temporary_link(f'/{userid}cover.jpg')
+			# cover = cover.link
+			cover = user[0][8]
+			
 			return render_template('dashBoard/profile.html', data=(user,comments, [dp, cover]))
 		except:
 			return render_template('dashBoard/profile.html', data=(user,comments))

@@ -70,7 +70,7 @@
 
         <!-- Cover -->
         <div class="cover">
-            {% if data|length == 3 %}
+            {% if data[2][1] is not none %}
             <img src="{{ data[2][1] }}" alt="">
             {% else %}
             <img src="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg" alt="">
@@ -82,7 +82,7 @@
 
             <div class="pre-bio">
                 <!-- DP -->
-                {% if data|length == 3 %}
+                {% if data[2][0] is not none %}
                 <img class="avatar" src="{{ data[2][0] }}" alt="">
                 {% else %}
                 <img src="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg" class="avatar">

@@ -63,15 +63,15 @@ def post():
 		# 	conn.commit()
 		if request.files.get('dp', False):
 			dp = request.files['dp']
-			dp.save(f'static/images/{userid}.jpg')
+			dp.save(f'static/images/{userid}dp.jpg')
 			# im_dp = open(f'static/images/{userid}.jpg', 'rb').read()
 			# dbx.files_upload(im_dp, f'/{userid}dp.jpg', mode=dropbox.files.WriteMode.overwrite)
-			s3.Bucket('newtwitter-bucket').upload_file(f'static/images/{userid}.jpg', f'images/{userid}.jpg', {'ACL':'public-read'})
-			os.remove(f'static/images/{userid}.jpg')
+			s3.Bucket('newtwitter-bucket').upload_file(f'static/images/{userid}dp.jpg', f'images/{userid}dp.jpg', {'ACL':'public-read'})
+			os.remove(f'static/images/{userid}dp.jpg')
 			#get link to save in user table
 			# dp = dbx.files_get_temporary_link(f'/{userid}dp.jpg')
 			# dp =dp.link
-			dp = f'https://newtwitter-bucket.s3.ap-south-1.amazonaws.com/images/{userid}.jpg'
+			dp = f'https://newtwitter-bucket.s3.ap-south-1.amazonaws.com/images/{userid}dp.jpg'
 			conn = mysql.connector.connect(host='database-404.cljpc2llv9ft.ap-south-1.rds.amazonaws.com',user='admin', password='admin2114', database='newtwitter')
 			cursor = conn.cursor()
 			cursor.execute(("UPDATE newtwitter_user SET dp_link='{}' WHERE userid='{}' ".format(dp, userid)))
@@ -80,10 +80,17 @@ def post():
 
 		if request.files.get('cover', False):
 			cover = request.files['cover']
-			cover.save(f'static/images/{userid}.jpg')
-			im_cover = open(f'static/images/{userid}.jpg', 'rb').read()
-			dbx.files_upload(im_cover, f'/{userid}cover.jpg', mode=dropbox.files.WriteMode.overwrite)
-			os.remove(f'static/images/{userid}.jpg')
+			cover.save(f'static/images/{userid}cover.jpg')
+			# im_cover = open(f'static/images/{userid}.jpg', 'rb').read()
+			# dbx.files_upload(im_cover, f'/{userid}cover.jpg', mode=dropbox.files.WriteMode.overwrite)
+			s3.Bucket('newtwitter-bucket').upload_file(f'static/images/{userid}cover.jpg', f'images/{userid}cover.jpg', {'ACL':'public-read'})
+			os.remove(f'static/images/{userid}cover.jpg')
+
+			cover = f'https://newtwitter-bucket.s3.ap-south-1.amazonaws.com/images/{userid}cover.jpg'
+			conn = mysql.connector.connect(host='database-404.cljpc2llv9ft.ap-south-1.rds.amazonaws.com',user='admin', password='admin2114', database='newtwitter')
+			cursor = conn.cursor()
+			cursor.execute(("UPDATE newtwitter_user SET cover_link='{}' WHERE userid='{}' ".format(cover, userid)))
+			conn.commit()
 		
 		return redirect(url_for('landingPage.dashboard'))
 	return redirect(url_for('landingPage.dashboard'))
