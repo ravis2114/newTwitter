@@ -3,19 +3,20 @@ from flask import Blueprint, render_template, session, redirect, url_for, reques
 import datetime
 import os
 import mysql.connector
-import dropbox
+# import dropbox
 
-dropbox_access_token= "xogv50OrMysAAAAAAAAAAZLNZRmAmZXik0U4xaF6EoWmQlFMPiDuw6JmfxzDWTiF"
-dropbox_path= "/Apps/newTwitter"
-dbx = dropbox.Dropbox(dropbox_access_token)
+# dropbox_access_token= "xogv50OrMysAAAAAAAAAAZLNZRmAmZXik0U4xaF6EoWmQlFMPiDuw6JmfxzDWTiF"
+# dropbox_path= "/Apps/newTwitter"
+# dbx = dropbox.Dropbox(dropbox_access_token)
 
 import boto3
+from amazon_config import access_key, secret_access_key
 
 s3 = boto3.resource(
     service_name='s3',
     region_name='ap-south-1',
-    aws_access_key_id='AKIASH7RNCJKGCIBLRRM',
-    aws_secret_access_key='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'
+    aws_access_key_id=access_key,
+    aws_secret_access_key=secret_access_key
 )
 
 # conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
