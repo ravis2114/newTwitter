@@ -9,6 +9,15 @@ dropbox_access_token= "xogv50OrMysAAAAAAAAAAZLNZRmAmZXik0U4xaF6EoWmQlFMPiDuw6Jmf
 dropbox_path= "/Apps/newTwitter"
 dbx = dropbox.Dropbox(dropbox_access_token)
 
+import boto3
+
+s3 = boto3.resource(
+    service_name='s3',
+    region_name='ap-south-1',
+    aws_access_key_id='AKIASH7RNCJKGCIBLRRM',
+    aws_secret_access_key='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'
+)
+
 # conn = mysql.connector.connect(host='freedb.tech',user='freedbtech_rsyst', password='zxcvbnml', database='freedbtech_rsyst')
 # cursor = conn.cursor()
 
@@ -55,12 +64,14 @@ def post():
 		if request.files.get('dp', False):
 			dp = request.files['dp']
 			dp.save(f'static/images/{userid}.jpg')
-			im_dp = open(f'static/images/{userid}.jpg', 'rb').read()
-			dbx.files_upload(im_dp, f'/{userid}dp.jpg', mode=dropbox.files.WriteMode.overwrite)
+			# im_dp = open(f'static/images/{userid}.jpg', 'rb').read()
+			# dbx.files_upload(im_dp, f'/{userid}dp.jpg', mode=dropbox.files.WriteMode.overwrite)
+			s3.Bucket('newtwitter-bucket').upload_file(f'static/images/{userid}.jpg', f'images/{userid}.jpg', {'ACL':'public-read'})
 			os.remove(f'static/images/{userid}.jpg')
 			#get link to save in user table
-			dp = dbx.files_get_temporary_link(f'/{userid}dp.jpg')
-			dp =dp.link
+			# dp = dbx.files_get_temporary_link(f'/{userid}dp.jpg')
+			# dp =dp.link
+			dp = f'https://newtwitter-bucket.s3.ap-south-1.amazonaws.com/images/{userid}.jpg'
 			conn = mysql.connector.connect(host='database-404.cljpc2llv9ft.ap-south-1.rds.amazonaws.com',user='admin', password='admin2114', database='newtwitter')
 			cursor = conn.cursor()
 			cursor.execute(("UPDATE newtwitter_user SET dp_link='{}' WHERE userid='{}' ".format(dp, userid)))
