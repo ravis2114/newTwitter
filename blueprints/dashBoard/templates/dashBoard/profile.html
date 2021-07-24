@@ -53,14 +53,15 @@
         <!-- Header   -->
         <div class="container d-flex bg-dark  py-2 px-0 sticky-top">
 
-            <a href="{{url_for('landingPage.feed')}}" role="button" class="arrow mx-3 text-center align-self-center rounded-circle justify-content-center">
+            <a href="{{url_for('landingPage.feed')}}" role="button"
+                class="arrow mx-3 text-center align-self-center rounded-circle justify-content-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" fill="currentColor"
                     class="bi bi-arrow-left " viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
                         d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
                 </svg>
             </a>
-            
+
             <div>
                 <div class="header ">{{data[0][0][0]}}</div>
                 <div class="subtext ">{{ data[1]|length }} newTweets</div>
@@ -73,7 +74,8 @@
             {% if data[2][1] is not none %}
             <img src="{{ data[2][1] }}" alt="">
             {% else %}
-            <img src="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg" alt="">
+            <img src="https://img.freepik.com/free-vector/hatching-bird-process-set_74855-6524.jpg?size=626&ext=jpg&ga=GA1.2.583268617.1626998400"
+                alt="">
             {% endif %}
         </div>
 
@@ -85,7 +87,8 @@
                 {% if data[2][0] is not none %}
                 <img class="avatar" src="{{ data[2][0] }}" alt="">
                 {% else %}
-                <img src="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg" class="avatar">
+                <img src="https://media.istockphoto.com/vectors/egg-icon-flat-vector-id1135628884?b=1&k=6&m=1135628884&s=612x612&w=0&h=9TbMLOIeI1R-8rGb2-I99Go5h2tJrWaCR3Gq3cA0p24="
+                    class="avatar">
                 {% endif %}
 
                 <div>
@@ -147,10 +150,10 @@
         <div class="feed" id="feed">
             <div class="userid">
                 <!-- <div class="avatar-mini"></div> -->
-                {% if data|length == 3 %}
+                {% if data[2][1] is not none %}
                 <img class="avatar-mini" src="{{ data[2][0] }}" alt="">
                 {% else %}
-                <img src="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg"
+                <img src="https://media.istockphoto.com/vectors/egg-icon-flat-vector-id1135628884?b=1&k=6&m=1135628884&s=612x612&w=0&h=9TbMLOIeI1R-8rGb2-I99Go5h2tJrWaCR3Gq3cA0p24="
                     class="avatar-mini">
                 {% endif %}
 
@@ -198,7 +201,8 @@
                         <form class="tweetContainer" method="post" action="{{ url_for('dashBoard.tweet')}}">
 
                             <div class="form-floating">
-                                <textarea name="tweetArea" class="form-control w-100 text-white" id="tweetArea" placeholder="write your newTweet"
+                                <textarea name="tweetArea" class="form-control w-100 text-white" id="tweetArea"
+                                    placeholder="write your newTweet"
                                     style="resize: none; background-color: black;"></textarea>
                                 <label for="floatingTextarea2">write your newTweet</label>
                             </div>
@@ -241,11 +245,11 @@
                             <div class="coverEdit">
 
 
-                                {% if data|length == 3 %}
+                                {% if data[2][1] is not none %}
                                 <img id="coverbg" onclick="coverPrev()" src="{{ data[2][1] }}" alt="">
                                 {% else %}
                                 <img id="coverbg" onclick="coverPrev()"
-                                    src="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg"
+                                    src="https://img.freepik.com/free-vector/hatching-bird-process-set_74855-6524.jpg?size=626&ext=jpg&ga=GA1.2.583268617.1626998400"
                                     alt="">
                                 {% endif %}
 
@@ -256,13 +260,14 @@
 
 
 
-                            {% if data|length == 3 %}
+                            {% if data[2][0] is not none %}
                             <img id="avatarEdit" onclick="dpPrev()" class="avatarEdit" src="{{ data[2][0] }}" alt="">
                             {% else %}
                             <img id="avatarEdit" onclick="dpPrev()"
-                                src="https://pbs.twimg.com/profile_images/1403684554829754369/QK7LjgiS_400x400.jpg"
+                                src="https://media.istockphoto.com/vectors/egg-icon-flat-vector-id1135628884?b=1&k=6&m=1135628884&s=612x612&w=0&h=9TbMLOIeI1R-8rGb2-I99Go5h2tJrWaCR3Gq3cA0p24="
                                 class="avatarEdit">
                             {% endif %}
+
 
 
 

@@ -10,8 +10,7 @@ import mysql.connector
 # dbx = dropbox.Dropbox(dropbox_access_token)
 
 import boto3
-from amazon_config import access_key, secret_access_key
-
+from blueprints.dashBoard.amazon_config import access_key, secret_access_key
 s3 = boto3.resource(
     service_name='s3',
     region_name='ap-south-1',
